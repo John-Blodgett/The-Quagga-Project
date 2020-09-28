@@ -8,6 +8,7 @@ Developers:
 	- John
 	- Brandon
 	- Sullivan
+	- Eli
 ---
 Resources:
 	- HTML
