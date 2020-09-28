@@ -5,6 +5,7 @@ The Quagga Project
 ---
 Developers:
 	- Chris
+	- Eli
 ---
 Resources:
 	- HTML
