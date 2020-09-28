@@ -1,6 +1,9 @@
 The Quagga Project
 
 ---
+Developers:
+	- Chris
+---
 Resources:
 	- HTML
 	- CSS
