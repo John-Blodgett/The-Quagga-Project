@@ -2,10 +2,68 @@
 <html lang = "en"></html>
 <head>
     <meta charset = "UTF-8" />
-    <script type="text/javascript" src="canvas_testing.js"></script>
+    <!-- <script type="text/javascript" src="canvas_testing.js"></script> -->
+    <link rel = "stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Quagga Time!</h1>
-    <br>
+<body style="background-color:#4e4eb1;">
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li class = "logo" > <img src = "logo.png"></li>
+                <li class = "active">Today</li>
+                <li>Week</li>
+                <li>Month</li>
+                <li><a href = "#" class = "signin">Signed in as: jblodget</a></li>
+            </ul>
+        </div>
 
+        <div class="dropdown">
+            <button class="dropbtn">Class Select</button>
+            <div class="dropdown-content">
+            <a href="#">Class 1</a>
+            <a href="#">Class 2</a>
+            <a href="#">Class 3</a>
+            <a href="#">Class 4</a>
+            </div>
+        </div>
+
+        <table class = "todo_complete_tbl">
+        <tr>
+            <th><label class = "header_lbl">ToDo</label></th>
+            <th><label class = "header_lbl">Completed</label></th>
+        </tr>
+        <tr>
+            <td>
+            <br>
+            <div class = "checklist">
+                <ul id="todoUL">
+                    <li>Quiz 3<br><p class= "date">Sep 28</p></li>
+                    <li>Homework 2<br><p class= "date">Sep 29</p></li>
+                    <li>Quiz 4<br><p class= "date">Oct 2</p></li>
+                    <li>Homework 3<br><p class= "date">Oct 4</p></li>
+                    <li>Reading Assignment 2<br><p class= "date">Oct 6</p></li>
+                    <li>Project 1<br><p class= "date">Oct 20</p></li>
+                </ul>
+            </div>
+            </td>
+            <td>
+                <br>
+                <div class = "checklist">
+                    <ul id="completedUL">
+                        <li class = "checked">Quiz 1    18/20<br><p class= "date">Sep 20</p></li>
+                        <li class = "checked">Homework 1    4/20<br><p class= "date">Sep 24</p></li>
+                        <li class = "checked">Quiz 2    20/20<br><p class= "date">Oct 2</p></li>
+
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        </table>
+        <div id="myDIV" class ="newtask">
+            <h2 style="margin:5px">Add new task</h2>
+            <input type="text" id="myInput" placeholder="Club Meeting at 5pm...">
+            <input type="date" id="birthday" name="birthday" >
+            <span onclick="newElement()" class="addBtn">Add</span>
+          </div>
+    </div>
 </body>
