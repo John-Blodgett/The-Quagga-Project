@@ -7,6 +7,7 @@ Developers:
 	- Chris
 	- John
 	- Brandon
+	- Eli
 ---
 Resources:
 	- HTML
