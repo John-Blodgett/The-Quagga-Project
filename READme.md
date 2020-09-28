@@ -6,6 +6,7 @@ The Quagga Project
 Developers:
 	- Chris
 	- John
+	- Brandon
 ---
 Resources:
 	- HTML
