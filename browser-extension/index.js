@@ -33,3 +33,8 @@ function moveElement(elem, location)
 // it the styling of task4
 // addElement("div", "NEW TASK", "left", "task4")
 
+//Creates the functionality to trigger a function upon opening an extension, can also use document.onload if necessary
+//window.onload = function(){
+//yourfunction(param1,param2,....)
+//}
+
