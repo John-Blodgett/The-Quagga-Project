@@ -8,7 +8,7 @@ body
     border: 2px solid #0D3B66;
     box-sizing: border-box;
 }
-.AuaggaLogo{
+.QuaggaLogo{
     position: absolute;
     width: 50px;
     height: 50px;
@@ -19,33 +19,88 @@ body
 }
 .QuaggaTitle{
     position: absolute;
+    font-family: Roboto;
 
-font-family: Roboto;
-
-font-size: 24px;
-line-height: 28px;
-text-align: center;
-width: 96px;
-height: 36px;
-left: 55px;
-top: -12px;
-color: #000000;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    width: 96px;
+    height: 36px;
+    left: 55px;
+    top: -12px;
+    color: #000000;
 }
+
+ /* Advanved Button */
 .AdvancedButton{
     position: absolute;
-width: 106px;
-height: 38px;
-left: 347px;
-top: 313px;
-cursor: pointer;
-font-family: Roboto;
-font-size: 14px;
-line-height: 16px;
-color: #FFFFFF;
+    width: 106px;
+    height: 38px;
+    left: 347px;
+    top: 313px;
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
 
-background: #0D3B66;
-border: 1px solid #000000;
-box-sizing: border-box;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
+    background: #0D3B66;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
     }
+
+    /* Dropdown nenu */
+.dropdown {
+    left: 25%;
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    left: 240px;
+    top: 6px;
+    background: #0D3B66;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 14px;
+    color: #F6F7FC;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: absolute;
+    left: 240px;
+    top: 26px;
+    background: #F6F7FC;
+    border: 0.5px solid #000000;
+    box-sizing: border-box;
+}
+.dropdown-content a {
+    padding: 3px 10px;
+    text-decoration: none;
+    display: block;
+    background: #F6F7FC;
+    border: 0.5px solid #000000;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+color: #000000;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+
