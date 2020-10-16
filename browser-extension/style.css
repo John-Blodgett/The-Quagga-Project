@@ -8,7 +8,9 @@ body
     border: 2px solid #0D3B66;
     box-sizing: border-box;
 }
-.AuaggaLogo{
+
+/* Logo and Title*/
+.QuaggaLogo{
     position: absolute;
     width: 50px;
     height: 50px;
@@ -19,33 +21,261 @@ body
 }
 .QuaggaTitle{
     position: absolute;
+    font-family: Roboto;
 
-font-family: Roboto;
-
-font-size: 24px;
-line-height: 28px;
-text-align: center;
-width: 96px;
-height: 36px;
-left: 55px;
-top: -12px;
-color: #000000;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    width: 96px;
+    height: 36px;
+    left: 55px;
+    top: -12px;
+    color: #000000;
 }
+
+ /* Advanved Button */
 .AdvancedButton{
     position: absolute;
-width: 106px;
-height: 38px;
-left: 347px;
-top: 313px;
-cursor: pointer;
-font-family: Roboto;
-font-size: 14px;
-line-height: 16px;
-color: #FFFFFF;
+    width: 106px;
+    height: 38px;
+    left: 347px;
+    top: 313px;
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
 
-background: #0D3B66;
-border: 1px solid #000000;
-box-sizing: border-box;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
+    background: #0D3B66;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
     }
+
+    /* Dropdown nenu */
+.dropdown {
+    left: 25%;
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    left: 240px;
+    top: 6px;
+    background: #0D3B66;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 14px;
+    color: #F6F7FC;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: absolute;
+    left: 240px;
+    top: 26px;
+    background: #F6F7FC;
+    border: 0.5px solid #000000;
+    box-sizing: border-box;
+}
+.dropdown-content a {
+    padding: 3px 10px;
+    text-decoration: none;
+    display: block;
+    background: #F6F7FC;
+    border: 0.5px solid #000000;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+color: #000000;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Sort by component */
+.sbcFrame {
+    position: absolute;
+    left: 166px;
+    top: 10px;
+    width: 175px;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    background: #0D3B66;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.sbcFrame > div:first-child {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    color: #F6F7FC;
+}
+
+.sbcFrame > div {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: 400;
+    color: #F6F7FC;
+}
+
+.sbcFrame > div > input {
+    margin: 0px;
+    width: 10px;
+    height: 10px;
+    float: right;
+    margin-right: 2px;
+}
+
+/*To do list*/
+.assignFrame {
+    position: absolute;
+    width: 150px;
+    display: grid;
+    
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.assignFrame > asgn:first-child {
+    display: grid;
+    background-color: #F95837;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: 1px solid #0D3B66;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(2) {
+    display: grid;
+    background-color: #FF7153;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(3) {
+    display: grid;
+    background-color: #EE964B;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(4) {
+    display: grid;
+    background-color: #F3BC2F;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(5) {
+    display: grid;
+    background-color: #F4D35E;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(6) {
+    display: grid;
+    background-color: #FFE794;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(7) {
+    display: grid;
+    background-color: #FAF0CA;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn:nth-child(8) {
+    display: grid;
+    background-color: #E1E1E1;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
+
+.assignFrame > asgn > sec {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+    line-height: 32.375px;
+    padding-left: 5px;
+}
+
+.assignFrame > asgn > .descAndScore {
+    font-family: Roboto;
+    font-size: 13px;
+    color: black;
+    font-weight: 700;
+    background-color: inherit;
+}
+
+.assignFrame > asgn > .descAndScore > .dotDotDot {
+    transform: translateY(0%);
+    background-color: inherit;
+    line-height: 1px;
+    padding-bottom: 14px;
+}
+
+.assignFrame > asgn > .descAndScore > .score {
+    margin-top: 2.375px;
+}
+
+.assignFrame > asgn > .descAndScore > .dotDotDot:hover .descriptionBlock {
+    display: block;
+}
+
+.descriptionBlock {
+    display: none;
+    background-color: inherit;
+    position: fixed;
+    left: 15px;
+    top: -1.5px;
+    line-height: 100%;
+}
+
+.descriptionBlock > sec {
+    display: grid;
+    width: 125px;
+    height: 100px;
+    grid-template-rows: 80% 20%;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 2.5px;
+    background-color: inherit;
+    border: 1px solid #0D3B66;
+}
