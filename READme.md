@@ -16,4 +16,6 @@ Resources:
 	- JavaScript
 	- Canvas API
 
+# System Architecture
 
+![alt text](<System-Architecture.png>)
