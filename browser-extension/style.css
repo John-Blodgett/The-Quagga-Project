@@ -231,7 +231,7 @@ color: #000000;
     font-size: 12px;
     font-weight: 600;
     color: black;
-    line-height: 25px;
+    line-height: 30px;
     padding-left: 5px;
 }
 
@@ -241,18 +241,14 @@ color: #000000;
     color: black;
     font-weight: 700;
     background-color: inherit;
-    height: 29px;
+    height: 28px;
 }
 
 .assignFrame > asgn > .descAndScore > .dotDotDot {
     transform: translateY(0%);
     background-color: inherit;
     line-height: 1px;
-    padding-bottom: 14px;
-}
-
-.assignFrame > asgn > .descAndScore > .score {
-    margin-top: 2.375px;
+    padding-bottom: 11.625px;
 }
 
 .assignFrame > asgn > .descAndScore > .dotDotDot:hover .descriptionBlock {
