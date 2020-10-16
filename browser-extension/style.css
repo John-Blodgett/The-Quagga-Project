@@ -147,9 +147,9 @@ color: #000000;
 /*To do list*/
 .assignFrame {
     position: absolute;
-    width: 150px;
     display: grid;
-    
+    width: 150px;
+    grid-template-rows: 30px;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -231,7 +231,7 @@ color: #000000;
     font-size: 12px;
     font-weight: 600;
     color: black;
-    line-height: 32.375px;
+    line-height: 25px;
     padding-left: 5px;
 }
 
@@ -241,6 +241,7 @@ color: #000000;
     color: black;
     font-weight: 700;
     background-color: inherit;
+    height: 29px;
 }
 
 .assignFrame > asgn > .descAndScore > .dotDotDot {
@@ -256,6 +257,10 @@ color: #000000;
 
 .assignFrame > asgn > .descAndScore > .dotDotDot:hover .descriptionBlock {
     display: block;
+}
+
+.assignFrame > asgn > sec {
+    height: 29px;
 }
 
 .descriptionBlock {
