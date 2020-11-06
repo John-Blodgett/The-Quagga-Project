@@ -38,3 +38,58 @@ function moveElement(elem, location)
 //yourfunction(param1,param2,....)
 //}
 
+function parseCourses(jsonObject, enrollment_id){
+    var courseIdList = [];
+    for (var i in jsonObject){
+        if (jsonObject[i]["enrollment_term_id"] == enrollment_id){
+            courseIdList.push(jsonObject[i]["id"])
+        }
+    }
+    return (courseIdList);
+}
+
+function getAssignmentObj(token, courseId){
+    var jsonObject = getRequest("https://canvas.calpoly.edu/api/v1/courses/" + courseId + "/assignments/", token)
+    return jsonObject
+}
+
+function getAssignmentAttr(jsonObject, attrib){
+    attribArr = []
+    for (var i in jsonObject){
+        console.log(jsonObject[i][attrib])
+        attribArr.push(jsonObject[i][attrib])
+    }
+    return attribArr
+}
+
+function getRequest(url, token){
+    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    var request = new XMLHttpRequest()
+    console.log(url)
+    request.open('GET', url, false)
+    request.setRequestHeader('Authorization', 'Bearer ' + token);
+    request.send();
+    if (request.status >= 200 && request.status < 400) {
+        var obj = JSON.parse(request.responseText);
+        return obj
+    } else {
+        console.log('error')
+    }
+
+}
+
+//window.onload = function(){
+//yourfunction(param1,param2,....)
+//}
+const token = "ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1"
+const enrollment_term = 38
+var obj = getRequest("https://calpoly.instructure.com/api/v1/courses", token)
+var courseId = parseCourses(obj, enrollment_term)
+
+for (var i = 0; i < courseId.length; i++){
+    var obj2 = getAssignmentObj(token, courseId[i])
+    getAssignmentAttr(obj2, "name")
+    getAssignmentAttr(obj2, "points_possible")
+    // getAssignmentAttr(obj2, "description")
+}
+
