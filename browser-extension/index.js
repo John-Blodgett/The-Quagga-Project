@@ -81,7 +81,7 @@ function getRequest(url, token){
 //window.onload = function(){
 //yourfunction(param1,param2,....)
 //}
-const token = "ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1"
+const token = ""
 const enrollment_term = 38
 var obj = getRequest("https://calpoly.instructure.com/api/v1/courses", token)
 var courseId = parseCourses(obj, enrollment_term)
