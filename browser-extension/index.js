@@ -78,18 +78,52 @@ function getRequest(url, token){
 
 }
 
-//window.onload = function(){
-//yourfunction(param1,param2,....)
-//}
-const token = ""
-const enrollment_term = 38
-var obj = getRequest("https://calpoly.instructure.com/api/v1/courses", token)
-var courseId = parseCourses(obj, enrollment_term)
+function addToDoAssignments(assignList){
+    for (var i = 0; i < 4; i++){
 
-for (var i = 0; i < courseId.length; i++){
-    var obj2 = getAssignmentObj(token, courseId[i])
-    getAssignmentAttr(obj2, "name")
-    getAssignmentAttr(obj2, "points_possible")
-    // getAssignmentAttr(obj2, "description")
+        //unique Id creation per assignment
+        asgnId = "asgn".concat(i.toString())
+        descId = "desc".concat(i.toString())
+        dotdotId = "dotdot".concat(i.toString())
+        descBlockId = "descBlock".concat(i.toString())
+        secId = "sec".concat(i.toString())
+
+        //assignment properties
+        // name = assignList[i]["name"]
+        // points_possible = assignList[i]["points_possible"]
+
+        name = "Assignment ".concat((i+2).toString())
+        console.log(name)
+
+        //Adding elements to html
+        addElement("asgn", "", "assignFrame", null, asgnId)
+        addElement("sec", name, asgnId, null, null)
+        addElement("div", "", asgnId, "descAndScore", descId)
+        addElement("div", "...", descId, "dotDotDot", dotdotId)
+        addElement("div", "", dotdotId, "descriptionBlock", descBlockId)
+        addElement("sec", "", descBlockId, null, secId)
+        addElement("div", "description", secId, "description")
+        addElement("div", "-/-", descId, "score", null)
+    }
+
 }
+
+window.onload = function(){
+    // const token = "ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1"
+    // const enrollment_term = 38
+    // var obj = getRequest("https://calpoly.instructure.com/api/v1/courses", token)
+    // var courseId = parseCourses(obj, enrollment_term)
+    // var list = []
+    // for (var i = 0; i < courseId.length; i++){
+    //     var obj2 = getAssignmentObj(token, courseId[i])
+    //     list.append(obj2)
+    //     var name = getAssignmentAttr(obj2, "name")
+    //     // getAssignmentAttr(obj2, "points_possible")
+    //     // getAssignmentAttr(obj2, "description")
+    // }
+    
+    addToDoAssignments(name)
+}
+
+
 
