@@ -1,4 +1,6 @@
 
+require('dotenv').config()
+
 // Change the text of element given the elements Id and the new text
 function changeElementText(id, newText) {
     document.getElementById(id).innerHTML = newText;
