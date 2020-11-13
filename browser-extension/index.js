@@ -6,7 +6,7 @@ function changeElementText(id, newText) {
 
 // Adds element given the type of element, text, the Id of the element to append
 // and options to set a class and Id for the new element
-function addElement(elementName, text, IdtoAppend, className = null, IdName = null,)
+function addElement(elementName, text, IdtoAppend, className = null, IdName = null, other = null)
 {
     var node = document.createElement(elementName);                
     var textnode = document.createTextNode(text);         
@@ -16,6 +16,8 @@ function addElement(elementName, text, IdtoAppend, className = null, IdName = nu
         {node.setAttribute("class", className);}  
     if (IdName)
         {node.setAttribute("id", IdName);}  
+    if (other)
+        {node.setAttribute(other[0], other[1]);}  
 }
 
 //Move element to the end of target element
@@ -108,6 +110,13 @@ function addToDoAssignments(assignList){
 
 }
 
+//Given a list of class names, add them to the dropdown menu
+function addClassesToDropdown(classList){
+    for (var i = 0; i < classList.length; i++){
+        addElement("a", "BlankClass", "dropdown-content", null, null, ["href", "#"])
+    }
+}
+
 window.onload = function(){
     // const token = "ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1"
     // const enrollment_term = 38
@@ -123,6 +132,7 @@ window.onload = function(){
     // }
     
     addToDoAssignments(name)
+    addClassesToDropdown(["308", "430", "314", "280"])
 }
 
 
