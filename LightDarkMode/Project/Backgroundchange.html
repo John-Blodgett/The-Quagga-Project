@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Change the Background Color with JavaScript</title>
+<script>
+    // Function to change webpage background color
+    function ColorChanger(){
+        if (document.getElementById("Dark Mode").innerText == "Light Mode"){
+            document.getElementById("Dark Mode").innerText = "Dark Mode";
+            document.body.style.background = "white";
+            document.body.style.color = "black";
+        }
+        else{
+            document.getElementById("Dark Mode").innerText = "Light Mode";;
+            document.body.style.background = " rgb(53, 53, 53)";
+            document.body.style.color = "white";
+        }
+    }
+</script>
+<style>
+    .square {
+      height: 60px;
+      width: 500px;
+      background-color: rgb(190, 15, 15);
+    }
+    .square2 {
+      height: 60px;
+      width: 500px;
+      background-color: rgb(33, 15, 190);
+    }
+    .square3 {
+      height: 60px;
+      width: 500px;
+      background-color: rgb(218, 142, 28);
+    }
+</style>
+
+</head>
+<body>
+
+    <h1 id="heading">Light and Dark mode test</h1>
+    <p>This is a paragraph of text.</p>
+    <div class = "container">
+        <div class = "square">
+            <div class = "text-block">
+                <p>Assignment1</p>
+            </div>
+        </div>
+        <div class = "square2">
+            <div class = "text-block">
+                <p>Assignment2</p>
+            </div>
+        </div>
+        <div class = "square3">
+            <div class = "text-block">
+                <p>Assignment2</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <label>Change Webpage Background To:</label>
+        <button type="button" onclick="ColorChanger(this);" id = "Dark Mode">Dark Mode</button>
+
+    </div>
+    <br>
+
+</body>
+</html>
