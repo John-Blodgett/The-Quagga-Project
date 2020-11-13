@@ -126,7 +126,7 @@ function addToDoAssignments(assignments){
 }
 
 window.onload = async function() {
-    const token = "15279~MCXxWVzUoSXmqf6xIqm3DDqgqgcFeRwfpDdpx3FyGXk5mDxBWnLmtfOCyBatoG0r"
+    const token = ""
     const enrollment_term = 38
     var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
     var courseId = parseCourses(classes, enrollment_term)
