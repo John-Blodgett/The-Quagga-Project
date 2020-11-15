@@ -1,6 +1,3 @@
-
-require('dotenv').config()
-
 // Change the text of element given the elements Id and the new text
 function changeElementText(id, newText) {
     document.getElementById(id).innerHTML = newText;
@@ -100,42 +97,43 @@ async function getRequest(url, token) {
 
 function addToDoAssignments(assignments){
     for (let i = 0; i < assignments.length; i++){
-        console.log(assignments[i])
 
         //unique Id creation per assignment
-        asgnId = "asgn".concat(i.toString())
-        descId = "desc".concat(i.toString())
-        dotdotId = "dotdot".concat(i.toString())
-        descBlockId = "descBlock".concat(i.toString())
-        secId = "sec".concat(i.toString())
+        let asgnId = "asgn".concat(i.toString());
+        let descId = "desc".concat(i.toString());
+        let dotdotId = "dotdot".concat(i.toString());
+        let descBlockId = "descBlock".concat(i.toString());
+        let secId = "sec".concat(i.toString());
 
         //assignment properties
-        name = getAssignmentAttr(assignments[i], "name")
-        points_possible = getAssignmentAttr(assignments[i], "points_possible")
-        description = getAssignmentAttr(assignments[i], "description")
+        let name = getAssignmentAttr(assignments[i], "name");
+        let points_possible = getAssignmentAttr(assignments[i], "points_possible");
+        let description = getAssignmentAttr(assignments[i], "description");
 
         //Adding elements to html
-        addElement("asgn", "", "assignFrame", null, asgnId)
-        addElement("sec", `${name}`, asgnId, null, null)
-        addElement("div", "", asgnId, "descAndScore", descId)
-        addElement("div", "...", descId, "dotDotDot", dotdotId)
-        addElement("div", "", dotdotId, "descriptionBlock", descBlockId)
-        addElement("sec", "", descBlockId, null, secId)
-        addElement("div", `${description}`, secId, "description")
-        addElement("div", `-/${points_possible}`, descId, "score", null)
+        addElement("asgn", "", "assignFrame", null, asgnId);
+        addElement("sec", `${name}`, asgnId, null, null);
+        addElement("div", "", asgnId, "descAndScore", descId);
+        addElement("div", "...", descId, "dotDotDot", dotdotId);
+        addElement("div", "", dotdotId, "descriptionBlock", descBlockId);
+        addElement("sec", "", descBlockId, null, secId);
+        addElement("div", `${description}`, secId, "description");
+        addElement("div", `-/${points_possible}`, descId, "score", null);
     }
 
 }
 
+import Token from './token.js';
+
 window.onload = async function() {
-    const token = ""
+    const token = Token.Token;
     const enrollment_term = 38
     var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
     var courseId = parseCourses(classes, enrollment_term)
     var assignments = []
     for (var i = 0; i < courseId.length; i++){
         var course = await getAssignmentObj(token, courseId[i])
-        for (assignment of course)
+        for (let assignment of course)
             assignments.push(assignment)
     }
     
