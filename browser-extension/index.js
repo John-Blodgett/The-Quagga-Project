@@ -157,23 +157,11 @@ import Token from './token.js';
 const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'assignments:D';
 
 window.onload = async function() {
-<<<<<<< HEAD
-    const token = process.env.CANVAS_TOKEN
-    const enrollment_term = 38
-    var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
-    var courseId = parseCourses(classes, enrollment_term)
-    var assignments = []
-    for (var i = 0; i < courseId.length; i++){
-        var course = await getAssignmentObj(token, courseId[i])
-        for (assignment of course)
-            assignments.push(assignment)
-=======
     const token = Token.Token;
     const enrollment_term = 38;
     const assignmentsLoadedFromLS = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_ASSIGNMENTS));
     if (assignmentsLoadedFromLS) {
         addToDoAssignments(assignmentsLoadedFromLS.toDo);
->>>>>>> 08e5a36bb64f593aa429568636ea4421d0b8e2f3
     }
 
     var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
