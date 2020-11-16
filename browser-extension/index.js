@@ -138,9 +138,14 @@ function addClassesToDropdown(classes){
     for (var i = 0; i < classes.length; i++){
         name = getAssignmentAttr(classes[i], "name")
         var id = getAssignmentAttr(classes[i], "id")
-        var node = addElement("a", name, "dropdown-content", null, id, ["a", "#"])
+        var node = addElement("a", parseClassNameForDropdown(name), "dropdown-content", null, id, ["a", "#"])
         document.getElementById(id).onclick = filterByClass(id)
     }
+}
+
+function parseClassNameForDropdown(rawClassName) {
+    var classNameArr = rawClassName.split('-')
+    return classNameArr[0] + '-' + classNameArr[1] // [CSC,308,03,2208 , Software Engineering I]
 }
 
 function filterByClass(classId){
