@@ -3,7 +3,6 @@ body
     position: relative;
     width: 480px;
     height: 360px;
-
     background: #F6F7FC;
     border: 2px solid #0D3B66;
     box-sizing: border-box;
@@ -16,7 +15,7 @@ body
     height: 50px;
     left: 0px;
     top: 0px;
-    background: url(TheQuaggaProject.png);
+    /* background: url(TheQuaggaProject.png); */
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .QuaggaTitle{
@@ -152,6 +151,12 @@ color: #000000;
     grid-template-rows: 30px;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-height: 240px;
+    /* overflow-y: scroll;
+    overflow-x: visible; */
+}
+.assignFrame::-webkit-scrollbar {
+    display: none;
 }
 
 .assignFrame > asgn:first-child {
@@ -225,6 +230,14 @@ color: #000000;
     border-top: none;
     border-bottom: 1px solid #0D3B66;
 }
+.assignFrame > asgn {
+    display: grid;
+    background-color: #E1E1E1;
+    grid-template-columns: 90% 10%;
+    border: 1px solid #0D3B66;
+    border-top: none;
+    border-bottom: 1px solid #0D3B66;
+}
 
 .assignFrame > asgn > sec {
     font-family: Roboto;
@@ -237,14 +250,18 @@ color: #000000;
 
 .assignFrame > asgn > .descAndScore {
     font-family: Roboto;
-    font-size: 13px;
     color: black;
     font-weight: 700;
     background-color: inherit;
     height: 28px;
+    
+}
+.assignFrame > asgn > .descAndScore > .score {
+    font-size: 8px;
 }
 
 .assignFrame > asgn > .descAndScore > .dotDotDot {
+    font-size: 13px;
     transform: translateY(0%);
     background-color: inherit;
     line-height: 1px;
@@ -253,6 +270,9 @@ color: #000000;
 
 .assignFrame > asgn > .descAndScore > .dotDotDot:hover .descriptionBlock {
     display: block;
+}
+.assignFrame > asgn > .descAndScore > .dotDotDot:hover .descriptionBlock::-webkit-scrollbar {
+    display: none;
 }
 
 .assignFrame > asgn > sec {
@@ -266,13 +286,14 @@ color: #000000;
     left: 15px;
     top: -1.5px;
     line-height: 100%;
+    overflow: scroll;
 }
 
 .descriptionBlock > sec {
     display: grid;
     width: 125px;
     height: 100px;
-    grid-template-rows: 80% 20%;
+    /* grid-template-rows: 80% 20%; */
     font-family: Roboto;
     font-size: 12px;
     font-weight: normal;
