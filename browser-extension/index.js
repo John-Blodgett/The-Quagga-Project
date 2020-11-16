@@ -1,6 +1,3 @@
-
-// require('dotenv').config()
-
 // Change the text of element given the elements Id and the new text
 function changeElementText(id, newText) {
     document.getElementById(id).innerHTML = newText;
@@ -20,6 +17,7 @@ function addElement(elementName, text, IdtoAppend, className = null, IdName = nu
         {node.setAttribute("id", IdName);}  
     if (other)
         {node.setAttribute(other[0], other[1]);}  
+    return node
 }
 
 //Move element to the end of target element
@@ -43,6 +41,16 @@ function moveElement(elem, location)
 //}
 
 function parseCourses(jsonObject, enrollment_id){
+    var courseList = [];
+    for (var i in jsonObject){
+        if (jsonObject[i]["enrollment_term_id"] == enrollment_id){
+            courseList.push(jsonObject[i])
+        }
+    }
+    return (courseList);
+}
+
+function parseCoursesId(jsonObject, enrollment_id){
     var courseIdList = [];
     for (var i in jsonObject){
         if (jsonObject[i]["enrollment_term_id"] == enrollment_id){
@@ -52,10 +60,6 @@ function parseCourses(jsonObject, enrollment_id){
     return (courseIdList);
 }
 
-// function getAssignmentObj(token, courseId){
-//     var jsonObject = getRequest("https://canvas.calpoly.edu/api/v1/courses/" + courseId + "/assignments/", token)
-//     return jsonObject
-// }
 
 async function getAssignmentObj(token, courseId) {
     return await getRequest("https://canvas.calpoly.edu/api/v1/courses/" + courseId + "/assignments/", token);
@@ -65,21 +69,6 @@ async function getAssignmentObj(token, courseId) {
 function getAssignmentAttr(item, attrib){
     return item[attrib]
 }
-
-// function getRequest(url, token){
-//     var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-//     var request = new XMLHttpRequest()
-//     console.log(url)
-//     request.open('GET', url, false)
-//     request.setRequestHeader('Authorization', 'Bearer ' + token);
-//     request.send();
-//     if (request.status >= 200 && request.status < 400) {
-//         var obj = JSON.parse(request.responseText);
-//         return obj
-//     } else {
-//         console.log('error')
-//     }
-// }
 
 async function getRequest(url, token) {
     // Default options are marked with *
@@ -100,60 +89,127 @@ async function getRequest(url, token) {
 }
 
 
-function addToDoAssignments(assignments){
+function addAssignments(assignments, frameId){
     for (let i = 0; i < assignments.length; i++){
-        console.log(assignments[i])
 
         //unique Id creation per assignment
-        asgnId = "asgn".concat(i.toString())
-        descId = "desc".concat(i.toString())
-        dotdotId = "dotdot".concat(i.toString())
-        descBlockId = "descBlock".concat(i.toString())
-        secId = "sec".concat(i.toString())
-        descripId = "descrip".concat(i.toString())
+        let asgnId = "asgn".concat(i.toString());
+        let descId = "desc".concat(i.toString());
+        let dotdotId = "dotdot".concat(i.toString());
+        let descBlockId = "descBlock".concat(i.toString());
+        let secId = "sec".concat(i.toString());
+        let linkId = "link".concat(i.toString());
+        let descripId = "descrip".concat(i.toString());
 
         //assignment properties
-        name = getAssignmentAttr(assignments[i], "name")
-        points_possible = getAssignmentAttr(assignments[i], "points_possible")
-        description = getAssignmentAttr(assignments[i], "description")
-
-        //Adding elements to html
-        addElement("asgn", "", "assignFrame", null, asgnId)
-        addElement("sec", `${name}`, asgnId, null, null)
-        addElement("div", "", asgnId, "descAndScore", descId)
-        addElement("div", "...", descId, "dotDotDot", dotdotId)
-        addElement("div", "", dotdotId, "descriptionBlock", descBlockId)
-        addElement("sec", "", descBlockId, null, secId)
+        let name = getAssignmentAttr(assignments[i], "name");
+        let points_possible = getAssignmentAttr(assignments[i], "points_possible");
+        let description = getAssignmentAttr(assignments[i], "description");
+        let html_url = getAssignmentAttr(assignments[i], "html_url");
+        let course_name = getAssignmentAttr(assignments[i], "course_name");
+        
+        addElement("asgn", "", frameId, null, asgnId);
+        addElement("sec", `${name}`, asgnId, null, null);
+        addElement("div", "", asgnId, "descAndScore", descId);
+        addElement("div", "...", descId, "dotDotDot", dotdotId);
+        addElement("div", "", dotdotId, "descriptionBlock", descBlockId);
+        addElement("sec", "", descBlockId, null, secId, secId);
+        addElement("div", `Description`, secId, "description");
+        addElement("div", `Course: ${course_name}`, secId, "className");
+        addElement("a", `Link`, secId, linkId, linkId, ["href",`${html_url}`]);
+        document.getElementById(linkId).href = html_url;
         addElement("div", "", secId, "description", descripId)
         changeElementText(descripId, description)
-        addElement("div", `-/${points_possible}`, descId, "score", null)
+        addElement("div", `-/${points_possible}`, descId, "score", null);
+    }
+}
+
+function reloadAssignments(newAssignments) {
+    var assignments = document.getElementById('todoFrame');
+    
+    while (assignments.firstChild) {
+        assignments.removeChild(assignments.firstChild);
     }
 
+    addAssignments(newAssignments, "todoFrame");
 }
 
 function addClassesToDropdown(classes){
     for (var i = 0; i < classes.length; i++){
         name = getAssignmentAttr(classes[i], "name")
-        addElement("a", name, "dropdown-content", null, null, ["href", "#"])
+        var id = getAssignmentAttr(classes[i], "id")
+        var node = addElement("a", name, "dropdown-content", null, id, ["a", "#"])
+        document.getElementById(id).onclick = filterByClass(id)
     }
 }
+
+function filterByClass(classId){
+    var assignments = document.getElementById('todoFrame')
+}
+
+function presetSort(assignments) {
+    var sortedAssignments = {};
+    const toDoAssignments = assignments.filter((ele) => {
+        let d1 = new Date (ele.due_at);
+        let d2 = Date.now();
+        return (d1 - d2) > 0;
+    });
+
+    const completedAssignments = assignments.filter((ele) => {
+        let d1 = new Date (ele.due_at);
+        let d2 = Date.now();
+        return (d1 - d2) <= 0;
+    });
+
+    const sortCompleted = completedAssignments.sort((ele1, ele2) => { 
+        let d1 = new Date (ele1.due_at);
+        let d2 = new Date (ele2.due_at);
+        return d1 - d2;
+    })
+
+    const sortByDueDate = toDoAssignments.sort((ele1, ele2) => { 
+        let d1 = new Date (ele1.due_at);
+        let d2 = new Date (ele2.due_at);
+        return d1 - d2;
+    })
+
+    // const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
+    //     code...
+    // })
+
+    sortedAssignments.original = assignments;
+    sortedAssignments.toDo = toDoAssignments;
+    sortedAssignments.byDueDate = sortByDueDate;
+    sortedAssignments.recentlyCompleted = sortCompleted;
+    return sortedAssignments;
+}
+
+import Token from './token.js';
+const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'assignments:D';
 
 window.onload = async function() {
-    // const token = process.env.CANVAS_TOKEN
-    const token = "ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1"
-    const enrollment_term = 38
-    var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
-    var courseId = parseCourses(classes, enrollment_term)
-    var assignments = []
-    for (var i = 0; i < courseId.length; i++){
-        var course = await getAssignmentObj(token, courseId[i])
-        for (assignment of course)
-            assignments.push(assignment)
+    const token = Token.Token;
+    const enrollment_term = 38;
+    const assignmentsLoadedFromLS = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_ASSIGNMENTS));
+    if (assignmentsLoadedFromLS) {
+        addAssignments(assignmentsLoadedFromLS.toDo, "todoFrame");
     }
-    
-    addToDoAssignments(assignments)
-    addClassesToDropdown(classes)
+
+    var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
+    var coursesOfCurrentTerm = parseCourses(classes, enrollment_term);
+    var courseId = parseCoursesId(classes, enrollment_term);
+    var assignments = [];
+
+    for (var i = 0; i < courseId.length; i++){
+        var course = await getAssignmentObj(token, courseId[i]);
+        for (let assignment of course) {
+            assignment.course_name = coursesOfCurrentTerm[i].name;
+            assignments.push(assignment);
+        }
+    }
+    let sortedAssignments = presetSort(assignments);
+    reloadAssignments(sortedAssignments.toDo);
+    localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortedAssignments));
+    addClassesToDropdown(coursesOfCurrentTerm)
+    // ask about creting lists before loading
 }
-
-
-
