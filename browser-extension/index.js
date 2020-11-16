@@ -1,5 +1,5 @@
 
-require('dotenv').config()
+// require('dotenv').config()
 
 // Change the text of element given the elements Id and the new text
 function changeElementText(id, newText) {
@@ -110,6 +110,7 @@ function addToDoAssignments(assignments){
         dotdotId = "dotdot".concat(i.toString())
         descBlockId = "descBlock".concat(i.toString())
         secId = "sec".concat(i.toString())
+        descripId = "descrip".concat(i.toString())
 
         //assignment properties
         name = getAssignmentAttr(assignments[i], "name")
@@ -123,13 +124,22 @@ function addToDoAssignments(assignments){
         addElement("div", "...", descId, "dotDotDot", dotdotId)
         addElement("div", "", dotdotId, "descriptionBlock", descBlockId)
         addElement("sec", "", descBlockId, null, secId)
-        addElement("div", `${description}`, secId, "description")
+        addElement("div", "", secId, "description", descripId)
+        changeElementText(descripId, description)
         addElement("div", `-/${points_possible}`, descId, "score", null)
     }
 
 }
 
+function addClassesToDropdown(classes){
+    for (var i = 0; i < classes.length; i++){
+        name = getAssignmentAttr(classes[i], "name")
+        addElement("a", name, "dropdown-content", null, null, ["href", "#"])
+    }
+}
+
 window.onload = async function() {
+    // const token = process.env.CANVAS_TOKEN
     const token = "ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1"
     const enrollment_term = 38
     var classes = await getRequest("https://calpoly.instructure.com/api/v1/courses", token);
@@ -142,6 +152,7 @@ window.onload = async function() {
     }
     
     addToDoAssignments(assignments)
+    addClassesToDropdown(classes)
 }
 
 
