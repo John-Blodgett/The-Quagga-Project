@@ -179,8 +179,8 @@ function presetSort(assignments) {
     })
 
     const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
-        var x1 = ele1.score;
-        var x2 = ele2.score;
+        var x1 = ele1.points_possible;
+        var x2 = ele2.points_possible;
         return x1-x2;
      })
 
