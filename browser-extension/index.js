@@ -27,19 +27,6 @@ function moveElement(elem, location)
     document.getElementById(location).appendChild(document.getElementById(elem) )
 }
 
-
-//Change the text of element with Id = "task1"
-// changeElementText("task1", "Changed Text");
-
-// Adds a <div>NEW TASK</div> to the end of div with id = "left" and gives 
-// it the styling of task4
-// addElement("div", "NEW TASK", "left", "task4")
-
-//Creates the functionality to trigger a function upon opening an extension, can also use document.onload if necessary
-//window.onload = function(){
-//yourfunction(param1,param2,....)
-//}
-
 function parseCourses(jsonObject, enrollment_id){
     var courseList = [];
     for (var i in jsonObject){
@@ -136,10 +123,10 @@ function reloadAssignments(newAssignments, frame) {
 
 function addClassesToDropdown(classes){
     for (var i = 0; i < classes.length; i++){
-        name = getAssignmentAttr(classes[i], "name")
+        let name = getAssignmentAttr(classes[i], "name")
         var id = getAssignmentAttr(classes[i], "id")
         var node = addElement("a", parseClassNameForDropdown(name), "dropdown-content", null, id, ["a", "#"])
-        document.getElementById(id).onclick = filterByClass(id)
+        node.onclick = function() { reloadAssignments(sortedAssignments[parseClassNameForDropdown(name)], 'todoFrame'); console.log(parseClassNameForDropdown(name));};
     }
 }
 
@@ -148,12 +135,9 @@ function parseClassNameForDropdown(rawClassName) {
     return classNameArr[0] + '-' + classNameArr[1] // [CSC,308,03,2208 , Software Engineering I]
 }
 
-function filterByClass(classId){
-    var assignments = document.getElementById('todoFrame')
-}
-
-function presetSort(assignments) {
+function presetSort(assignments, courses) {
     var sortedAssignments = {};
+   
     const toDoAssignments = assignments.filter((ele) => {
         let d1 = new Date (ele.due_at);
         let d2 = Date.now();
@@ -171,25 +155,38 @@ function presetSort(assignments) {
         let d2 = new Date (ele2.due_at);
         return d2 - d1;
     })
+    var firstcopy = JSON.parse(JSON.stringify(toDoAssignments));
+    var seccopy = JSON.parse(JSON.stringify(toDoAssignments));
 
-    const sortByDueDate = toDoAssignments.sort((ele1, ele2) => { 
+    const sortByDueDate = firstcopy.sort((ele1, ele2) => { 
         let d1 = new Date (ele1.due_at);
         let d2 = new Date (ele2.due_at);
-        return d1 - d2;
+        return d2 - d1;
     })
 
-    // const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
-    //     code...
-    // })
+    const sortByPointValue = seccopy.sort((ele1, ele2) => { 
+        let pv1 = ele1.points_possible;
+        let pv2 = ele2.points_possible;
+        return pv2 - pv1;
+    })
+
+
+    for (let course of courses) {
+        name = getAssignmentAttr(course, "name");
+        sortedAssignments[parseClassNameForDropdown(name)] = toDoAssignments.filter(ele => ele.course_name == name);
+    }
 
     sortedAssignments.original = assignments;
     sortedAssignments.toDo = toDoAssignments;
     sortedAssignments.byDueDate = sortByDueDate;
+    sortedAssignments.byPointValue = sortByPointValue;
     sortedAssignments.recentlyCompleted = sortCompleted;
     return sortedAssignments;
 }
 
+
 import Token from './token.js';
+var sortedAssignments;
 const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'assignments:D';
 
 window.onload = async function() {
@@ -212,10 +209,44 @@ window.onload = async function() {
             assignments.push(assignment);
         }
     }
-    let sortedAssignments = presetSort(assignments);
+    sortedAssignments = presetSort(assignments, coursesOfCurrentTerm);
     reloadAssignments(sortedAssignments.toDo, 'todoFrame');
     reloadAssignments(sortedAssignments.recentlyCompleted, 'completedFrame')
     localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortedAssignments));
     addClassesToDropdown(coursesOfCurrentTerm)
     // ask about creting lists before loading
 }
+
+var checkboxDueDate = document.querySelector("input[value=DueDate]");
+checkboxDueDate.addEventListener('change', function() {
+    console.log(sortedAssignments)
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
+        checkboxAssignmentPoints.checked = false;
+        checkboxClass.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
+    }
+});
+
+var checkboxAssignmentPoints = document.querySelector("input[value=AssignmentPoints]");
+checkboxAssignmentPoints.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.byPointValue, 'todoFrame');
+        checkboxDueDate.checked = false;
+        checkboxClass.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
+    }
+});
+
+var checkboxClass = document.querySelector("input[value=Class]");
+checkboxClass.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.toDo, 'todoFrame');
+        checkboxDueDate.checked = false;
+        checkboxAssignmentPoints.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
+    }
+});
