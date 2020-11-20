@@ -93,13 +93,13 @@ function addAssignments(assignments, frameId){
     for (let i = 0; i < assignments.length; i++){
 
         //unique Id creation per assignment
-        let asgnId = "asgn".concat(i.toString());
-        let descId = "desc".concat(i.toString());
-        let dotdotId = "dotdot".concat(i.toString());
-        let descBlockId = "descBlock".concat(i.toString());
-        let secId = "sec".concat(i.toString());
-        let linkId = "link".concat(i.toString());
-        let descripId = "descrip".concat(i.toString());
+        let asgnId = frameId[0] + "asgn".concat(i.toString());
+        let descId = frameId[0] + "desc".concat(i.toString());
+        let dotdotId = frameId[0] +"dotdot".concat(i.toString());
+        let descBlockId = frameId[0] +"descBlock".concat(i.toString());
+        let secId = frameId[0] +"sec".concat(i.toString());
+        let linkId = frameId[0] +"link".concat(i.toString());
+        let descripId = frameId[0] +"descrip".concat(i.toString());
 
         //assignment properties
         let name = getAssignmentAttr(assignments[i], "name");
@@ -124,14 +124,14 @@ function addAssignments(assignments, frameId){
     }
 }
 
-function reloadAssignments(newAssignments) {
-    var assignments = document.getElementById('todoFrame');
+function reloadAssignments(newAssignments, frame) {
+    var assignments = document.getElementById(frame);
     
     while (assignments.firstChild) {
         assignments.removeChild(assignments.firstChild);
     }
 
-    addAssignments(newAssignments, "todoFrame");
+    addAssignments(newAssignments, frame);
 }
 
 function addClassesToDropdown(classes){
@@ -169,7 +169,7 @@ function presetSort(assignments) {
     const sortCompleted = completedAssignments.sort((ele1, ele2) => { 
         let d1 = new Date (ele1.due_at);
         let d2 = new Date (ele2.due_at);
-        return d1 - d2;
+        return d2 - d1;
     })
 
     const sortByDueDate = toDoAssignments.sort((ele1, ele2) => { 
@@ -213,7 +213,8 @@ window.onload = async function() {
         }
     }
     let sortedAssignments = presetSort(assignments);
-    reloadAssignments(sortedAssignments.toDo);
+    reloadAssignments(sortedAssignments.toDo, 'todoFrame');
+    reloadAssignments(sortedAssignments.recentlyCompleted, 'completedFrame')
     localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortedAssignments));
     addClassesToDropdown(coursesOfCurrentTerm)
     // ask about creting lists before loading
