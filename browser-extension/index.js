@@ -27,19 +27,6 @@ function moveElement(elem, location)
     document.getElementById(location).appendChild(document.getElementById(elem) )
 }
 
-
-//Change the text of element with Id = "task1"
-// changeElementText("task1", "Changed Text");
-
-// Adds a <div>NEW TASK</div> to the end of div with id = "left" and gives 
-// it the styling of task4
-// addElement("div", "NEW TASK", "left", "task4")
-
-//Creates the functionality to trigger a function upon opening an extension, can also use document.onload if necessary
-//window.onload = function(){
-//yourfunction(param1,param2,....)
-//}
-
 function parseCourses(jsonObject, enrollment_id){
     var courseList = [];
     for (var i in jsonObject){
@@ -136,10 +123,10 @@ function reloadAssignments(newAssignments) {
 
 function addClassesToDropdown(classes){
     for (var i = 0; i < classes.length; i++){
-        name = getAssignmentAttr(classes[i], "name")
+        let name = getAssignmentAttr(classes[i], "name")
         var id = getAssignmentAttr(classes[i], "id")
         var node = addElement("a", parseClassNameForDropdown(name), "dropdown-content", null, id, ["a", "#"])
-        document.getElementById(id).onclick = filterByClass(id)
+        node.onclick = function() { reloadAssignments(sortedAssignments[parseClassNameForDropdown(name)]); console.log(parseClassNameForDropdown(name));};
     }
 }
 
@@ -148,11 +135,7 @@ function parseClassNameForDropdown(rawClassName) {
     return classNameArr[0] + '-' + classNameArr[1] // [CSC,308,03,2208 , Software Engineering I]
 }
 
-function filterByClass(classId){
-    var assignments = document.getElementById('todoFrame')
-}
-
-function presetSort(assignments) {
+function presetSort(assignments, courses) {
     var sortedAssignments = {};
     const toDoAssignments = assignments.filter((ele) => {
         let d1 = new Date (ele.due_at);
@@ -179,19 +162,27 @@ function presetSort(assignments) {
     })
 
     const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
-        var x1 = ele1.points_possible;
-        var x2 = ele2.points_possible;
-        return x1-x2;
-     })
+        let pv1 = ele1.points_possible;
+        let pv2 = ele2.points_possible;
+        return pv1 - pv2;
+    })
+
+    for (let course of courses) {
+        name = getAssignmentAttr(course, "name");
+        sortedAssignments[parseClassNameForDropdown(name)] = toDoAssignments.filter(ele => ele.course_name == name);
+    }
 
     sortedAssignments.original = assignments;
     sortedAssignments.toDo = toDoAssignments;
     sortedAssignments.byDueDate = sortByDueDate;
+    sortedAssignments.byPointValue = sortByPointValue;
     sortedAssignments.recentlyCompleted = sortCompleted;
     return sortedAssignments;
 }
 
+
 import Token from './token.js';
+var sortedAssignments;
 const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'assignments:D';
 
 window.onload = async function() {
@@ -214,9 +205,43 @@ window.onload = async function() {
             assignments.push(assignment);
         }
     }
-    let sortedAssignments = presetSort(assignments);
+
+    sortedAssignments = presetSort(assignments, coursesOfCurrentTerm);
     reloadAssignments(sortedAssignments.toDo);
     localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortedAssignments));
     addClassesToDropdown(coursesOfCurrentTerm)
     // ask about creting lists before loading
 }
+
+var checkboxDueDate = document.querySelector("input[value=DueDate]");
+checkboxDueDate.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.byDueDate);
+        checkboxAssignmentPoints.checked = false;
+        checkboxClass.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate);
+    }
+});
+
+var checkboxAssignmentPoints = document.querySelector("input[value=AssignmentPoints]");
+checkboxAssignmentPoints.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.byPointValue);
+        checkboxDueDate.checked = false;
+        checkboxClass.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate);
+    }
+});
+
+var checkboxClass = document.querySelector("input[value=Class]");
+checkboxClass.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.original);
+        checkboxDueDate.checked = false;
+        checkboxAssignmentPoints.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate);
+    }
+});
