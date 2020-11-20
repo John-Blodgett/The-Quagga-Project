@@ -143,17 +143,22 @@ function presetSort(assignments) {
         return d1 - d2;
     })
 
-    // const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
-    //     code...
-    // })
+    const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
+        let pv1 = ele1.points_possible;
+        let pv2 = ele2.points_possible;
+        return pv1 - pv2;
+    })
 
     sortedAssignments.original = assignments;
     sortedAssignments.toDo = toDoAssignments;
     sortedAssignments.byDueDate = sortByDueDate;
+    sortedAssignments.byPointValue = sortByPointValue;
     return sortedAssignments;
 }
 
+
 import Token from './token.js';
+var sortedAssignments;
 const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'assignments:D';
 
 window.onload = async function() {
@@ -177,7 +182,40 @@ window.onload = async function() {
         }
     }
 
-    let sortedAssignments = presetSort(assignmentsLoadedFromLS);
+    sortedAssignments = presetSort(assignments);
     reloadAssignments(sortedAssignments.toDo);
     localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortedAssignments));
 }
+
+var checkboxDueDate = document.querySelector("input[value=DueDate]");
+checkboxDueDate.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.byDueDate);
+        checkboxAssignmentPoints.checked = false;
+        checkboxClass.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate);
+    }
+});
+
+var checkboxAssignmentPoints = document.querySelector("input[value=AssignmentPoints]");
+checkboxAssignmentPoints.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.byPointValue);
+        checkboxDueDate.checked = false;
+        checkboxClass.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate);
+    }
+});
+
+var checkboxClass = document.querySelector("input[value=Class]");
+checkboxClass.addEventListener('change', function() {
+    if(this.checked) {
+        reloadAssignments(sortedAssignments.original);
+        checkboxDueDate.checked = false;
+        checkboxAssignmentPoints.checked = false;
+    } else {
+        reloadAssignments(sortedAssignments.byDueDate);
+    }
+});
