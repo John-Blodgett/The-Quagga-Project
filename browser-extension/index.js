@@ -80,13 +80,13 @@ function addAssignments(assignments, frameId){
     for (let i = 0; i < assignments.length; i++){
 
         //unique Id creation per assignment
-        let asgnId = "asgn".concat(i.toString());
-        let descId = "desc".concat(i.toString());
-        let dotdotId = "dotdot".concat(i.toString());
-        let descBlockId = "descBlock".concat(i.toString());
-        let secId = "sec".concat(i.toString());
-        let linkId = "link".concat(i.toString());
-        let descripId = "descrip".concat(i.toString());
+        let asgnId = frameId[0] + "asgn".concat(i.toString());
+        let descId = frameId[0] + "desc".concat(i.toString());
+        let dotdotId = frameId[0] +"dotdot".concat(i.toString());
+        let descBlockId = frameId[0] +"descBlock".concat(i.toString());
+        let secId = frameId[0] +"sec".concat(i.toString());
+        let linkId = frameId[0] +"link".concat(i.toString());
+        let descripId = frameId[0] +"descrip".concat(i.toString());
 
         //assignment properties
         let name = getAssignmentAttr(assignments[i], "name");
@@ -111,14 +111,14 @@ function addAssignments(assignments, frameId){
     }
 }
 
-function reloadAssignments(newAssignments) {
-    var assignments = document.getElementById('todoFrame');
+function reloadAssignments(newAssignments, frame) {
+    var assignments = document.getElementById(frame);
     
     while (assignments.firstChild) {
         assignments.removeChild(assignments.firstChild);
     }
 
-    addAssignments(newAssignments, "todoFrame");
+    addAssignments(newAssignments, frame);
 }
 
 function addClassesToDropdown(classes){
@@ -126,7 +126,7 @@ function addClassesToDropdown(classes){
         let name = getAssignmentAttr(classes[i], "name")
         var id = getAssignmentAttr(classes[i], "id")
         var node = addElement("a", parseClassNameForDropdown(name), "dropdown-content", null, id, ["a", "#"])
-        node.onclick = function() { reloadAssignments(sortedAssignments[parseClassNameForDropdown(name)]); console.log(parseClassNameForDropdown(name));};
+        node.onclick = function() { reloadAssignments(sortedAssignments[parseClassNameForDropdown(name)], 'todoFrame'); console.log(parseClassNameForDropdown(name));};
     }
 }
 
@@ -137,6 +137,7 @@ function parseClassNameForDropdown(rawClassName) {
 
 function presetSort(assignments, courses) {
     var sortedAssignments = {};
+   
     const toDoAssignments = assignments.filter((ele) => {
         let d1 = new Date (ele.due_at);
         let d2 = Date.now();
@@ -152,20 +153,23 @@ function presetSort(assignments, courses) {
     const sortCompleted = completedAssignments.sort((ele1, ele2) => { 
         let d1 = new Date (ele1.due_at);
         let d2 = new Date (ele2.due_at);
-        return d1 - d2;
+        return d2 - d1;
     })
+    var firstcopy = JSON.parse(JSON.stringify(toDoAssignments));
+    var seccopy = JSON.parse(JSON.stringify(toDoAssignments));
 
-    const sortByDueDate = toDoAssignments.sort((ele1, ele2) => { 
+    const sortByDueDate = firstcopy.sort((ele1, ele2) => { 
         let d1 = new Date (ele1.due_at);
         let d2 = new Date (ele2.due_at);
-        return d1 - d2;
+        return d2 - d1;
     })
 
-    const sortByPointValue = toDoAssignments.sort((ele1, ele2) => { 
+    const sortByPointValue = seccopy.sort((ele1, ele2) => { 
         let pv1 = ele1.points_possible;
         let pv2 = ele2.points_possible;
-        return pv1 - pv2;
+        return pv2 - pv1;
     })
+
 
     for (let course of courses) {
         name = getAssignmentAttr(course, "name");
@@ -205,9 +209,9 @@ window.onload = async function() {
             assignments.push(assignment);
         }
     }
-
     sortedAssignments = presetSort(assignments, coursesOfCurrentTerm);
-    reloadAssignments(sortedAssignments.toDo);
+    reloadAssignments(sortedAssignments.toDo, 'todoFrame');
+    reloadAssignments(sortedAssignments.recentlyCompleted, 'completedFrame')
     localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortedAssignments));
     addClassesToDropdown(coursesOfCurrentTerm)
     // ask about creting lists before loading
@@ -215,33 +219,34 @@ window.onload = async function() {
 
 var checkboxDueDate = document.querySelector("input[value=DueDate]");
 checkboxDueDate.addEventListener('change', function() {
+    console.log(sortedAssignments)
     if(this.checked) {
-        reloadAssignments(sortedAssignments.byDueDate);
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
         checkboxAssignmentPoints.checked = false;
         checkboxClass.checked = false;
     } else {
-        reloadAssignments(sortedAssignments.byDueDate);
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
     }
 });
 
 var checkboxAssignmentPoints = document.querySelector("input[value=AssignmentPoints]");
 checkboxAssignmentPoints.addEventListener('change', function() {
     if(this.checked) {
-        reloadAssignments(sortedAssignments.byPointValue);
+        reloadAssignments(sortedAssignments.byPointValue, 'todoFrame');
         checkboxDueDate.checked = false;
         checkboxClass.checked = false;
     } else {
-        reloadAssignments(sortedAssignments.byDueDate);
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
     }
 });
 
 var checkboxClass = document.querySelector("input[value=Class]");
 checkboxClass.addEventListener('change', function() {
     if(this.checked) {
-        reloadAssignments(sortedAssignments.original);
+        reloadAssignments(sortedAssignments.toDo, 'todoFrame');
         checkboxDueDate.checked = false;
         checkboxAssignmentPoints.checked = false;
     } else {
-        reloadAssignments(sortedAssignments.byDueDate);
+        reloadAssignments(sortedAssignments.byDueDate, 'todoFrame');
     }
 });
