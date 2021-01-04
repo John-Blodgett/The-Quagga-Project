@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
+import Header from './Header';
+import NavBar from './NavBar';
+import Page from './Page';
+
 
 function App() {
   return (
     <>
-      <div className="App">
-        hello world
-      </div>
+      <Header />
+      <NavBar />
+      <Page />
     </>
   );
 }
