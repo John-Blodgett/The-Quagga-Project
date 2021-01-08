@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 //import ReactDOM from 'react-dom';
 import './Page.css';
+import Todo from './components/Todo.js'
+import SortBy from './components/SortBy.js'
 
 function Faq() {
   return(
