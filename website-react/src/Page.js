@@ -4,10 +4,6 @@ import './Page.css';
 function Page() {
   return (
     <>
-      if personal-todo-component.on then
-      <PersonalTodo />
-      elseif todo-component.on then
-      <Todo />
     </>
   );
 }
