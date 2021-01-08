@@ -8,8 +8,8 @@ import Page from './Page';
 function App() {
   return (
     <>
-      <Header />
-      <NavBar />
+      {/* <Header />
+      <NavBar /> */}
       <Page />
     </>
   );
