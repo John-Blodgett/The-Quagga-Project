@@ -39,10 +39,13 @@ function Page() {
   } */
   return (
     <>
+<<<<<<< HEAD
+=======
       <button>
         FAQ
       </button>
       <Faq />
+>>>>>>> 6494f934380e79a254e6389be71072fef3f8af95
     </>
   );
 }
