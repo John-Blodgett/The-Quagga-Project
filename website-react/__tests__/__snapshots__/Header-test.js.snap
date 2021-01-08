@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  id="web-header-master"
+>
+  <div
+    id="zebra-logo"
+  >
+    <div
+      id="web-header-logo"
+    >
+      <img
+        alt="Quagga Logo"
+        src="/Logo.png"
+      />
+    </div>
+    <div
+      id="web-header-title"
+    >
+      Quagga
+    </div>
+  </div>
+</div>
+`;
