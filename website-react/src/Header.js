@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.css';
-
+import logo from './Logo.png';
 
 function Header() {
   return (
     <>
         <div>
             <div id="web-header-logo">
-                <img src="../public/Logo.png" alt="Quagga Logo"></img>
+                <img src={logo} alt="Quagga Logo"></img>
             </div>
             <div id="web-header-title">
                 Quagga
