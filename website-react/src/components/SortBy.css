@@ -1,0 +1,34 @@
+.sbcFrame {
+    position: relative;
+    width: 175px;
+    height: 400px;
+    display: block;
+    background: #0D3B66;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.sbcFrame > div:first-child {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    color: #F6F7FC;
+}
+
+.sbcFrame > div {
+    margin-top: 2px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    color: #F6F7FC;
+}
+
+.sbcFrame > div > input {
+    margin: 0px;
+    width: 10px;
+    height: 10px;
+    float: right;
+    margin-right: 2px;
+}

@@ -24,7 +24,6 @@ export default function Todo() {
                     <div className = 'todoClassName'>{assign.className}</div>
                     <div className = 'todoDesc'>{assign.desc}</div>
                     <div className = 'todoPointsPossible'>/{assign.pointsPossible}</div>
-                    
                 </asgn>
             })}
        </div>
