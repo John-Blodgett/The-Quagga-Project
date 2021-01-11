@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Navbar correctly 1`] = `
+<div
+  id="web-navbar-master"
+>
+  <div
+    id="navbar-component"
+  >
+    FAQ
+  </div>
+  <div
+    id="navbar-component"
+  >
+    Personal To-do
+  </div>
+  <div
+    id="navbar-component"
+  >
+    School To-do
+  </div>
+  <div
+    id="navbar-component"
+  >
+    Completed
+  </div>
+  <div
+    id="navbar-component"
+  >
+    About Quagga
+  </div>
+</div>
+`;
+
+exports[`renders Navbar correctly 2`] = `
+<div
+  class="sbcFrame"
+>
+  <div>
+     Sort by:
+  </div>
+  <div>
+    Due Date
+    <input
+      id="sort1"
+      name="sort1"
+      type="checkbox"
+      value="DueDate"
+    />
+  </div>
+  <div>
+    Assignment Points
+    <input
+      id="sort2"
+      name="sort2"
+      type="checkbox"
+      value="AssignmentPoints"
+    />
+  </div>
+  <div>
+    Class
+    <input
+      id="sort3"
+      name="sort3"
+      type="checkbox"
+      value="Class"
+    />
+     
+  </div>
+  <div>
+    Custom
+    <input
+      id="sort4"
+      name="sort4"
+      type="checkbox"
+      value="Custom"
+    />
+     
+  </div>
+</div>
+`;
+
+exports[`renders Navbar correctly 3`] = `
+<div
+  id="navbar-component"
+/>
+`;
+
+exports[`renders Navbar items list correctly 1`] = `
+<div
+  id="web-navbar-master"
+>
+  <div
+    id="navbar-component"
+  >
+    FAQ
+  </div>
+  <div
+    id="navbar-component"
+  >
+    Personal To-do
+  </div>
+  <div
+    id="navbar-component"
+  >
+    School To-do
+  </div>
+  <div
+    id="navbar-component"
+  >
+    Completed
+  </div>
+  <div
+    id="navbar-component"
+  >
+    About Quagga
+  </div>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  id="web-header-master"
+>
+  <div
+    id="zebra-background"
+  >
+    <div
+      id="web-header-logo"
+    >
+      <img
+        alt="Quagga Logo"
+        src="/Logo.png"
+      />
+    </div>
+    <div
+      id="web-header-title"
+    >
+      Quagga
+    </div>
+    <div
+      id="web-cog-wheel"
+    >
+      <img
+        alt="Cog Wheel"
+        src="/cogWheel2.png"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly 2`] = `
+<div
+  className="todoFrame"
+>
+  <asgn>
+    <div
+      className="todoName"
+    >
+      HW10
+    </div>
+    <div
+      className="todoClassName"
+    >
+      CSC309
+    </div>
+    <div
+      className="todoDesc"
+    >
+      HW10 is blah blah blah
+    </div>
+    <div
+      className="todoPointsPossible"
+    >
+      /
+      10
+    </div>
+  </asgn>
+  <asgn>
+    <div
+      className="todoName"
+    >
+      HW20
+    </div>
+    <div
+      className="todoClassName"
+    >
+      CSC309
+    </div>
+    <div
+      className="todoDesc"
+    >
+      HW20 Sucks
+    </div>
+    <div
+      className="todoPointsPossible"
+    >
+      /
+      30
+    </div>
+  </asgn>
+</div>
+`;
