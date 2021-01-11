@@ -1,3 +1,17 @@
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Header from '../src/Header';
+import Navbar from '../src/Navbar';
+
+test('renders Header correctly', () => {
+    const tree = renderer.create(<Header />).toJSON();
+    expect(tree).toMatchSnapshot();
+});
+
+test('renders Navbar correctly', () => {
+    const tree = renderer.create(<Navbar />).toJSON();
+    expect(tree).toMatchSnapshot();
+});
 
 var sampleAssignment = {
     'name': 'HW1',
@@ -58,6 +72,3 @@ test('Filers for all 309 courses', () => {
 test('Filers for all 430 courses', () => {
   expect(singleClassAssignments(todoList, "CSC430")).toStrictEqual(CSC430Classes);
 });
-
-
-

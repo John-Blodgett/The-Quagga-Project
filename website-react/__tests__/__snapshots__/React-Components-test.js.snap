@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Navbar correctly 1`] = `
+<div
+  id="web-navbar-master"
+>
+  <div
+    id="navbar-component"
+  >
+    FAQ
+  </div>
+  <div
+    id="navbar-component"
+  >
+    Personal To-do
+  </div>
+  <div
+    id="navbar-component"
+  >
+    School To-do
+  </div>
+  <div
+    id="navbar-component"
+  >
+    Completed
+  </div>
+  <div
+    id="navbar-component"
+  >
+    About Quagga
+  </div>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  id="web-header-master"
+>
+  <div
+    id="zebra-background"
+  >
+    <div
+      id="web-header-logo"
+    >
+      <img
+        alt="Quagga Logo"
+        src="/Logo.png"
+      />
+    </div>
+    <div
+      id="web-header-title"
+    >
+      Quagga
+    </div>
+    <div
+      id="web-cog-wheel"
+    >
+      <img
+        alt="Cog Wheel"
+        src="/cogWheel2.png"
+      />
+    </div>
+  </div>
+</div>
+`;
