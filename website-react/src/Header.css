@@ -6,12 +6,32 @@
 
 #web-header-logo {
     display: inline-block;
+    
+    position: inherit;
 }
 
 #web-header-title {
     display: inline-block;
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
 }
 
-#zebra-logo {
-    background-image: image("/Zebra 5.png");
+#zebra-background {
+    display: table-cell;
+    width: inherit;
+    height: inherit;
+    vertical-align: middle;
+    background-image: url('./Zebra\ 5.png');
+}
+
+#web-cog-wheel {
+    float: right;
+    padding-right: 1.75vw;
+    padding-top: 2vh;
+}
+
+#web-cog-wheel > img {
+    width: 30px;
+    height: 30px;
 }

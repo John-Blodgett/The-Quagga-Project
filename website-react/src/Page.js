@@ -39,21 +39,10 @@ function Page() {
   } */
   return (
     <>
-<<<<<<< HEAD
-=======
-      <button>
-        FAQ
-      </button>
       <Faq />
->>>>>>> 6494f934380e79a254e6389be71072fef3f8af95
     </>
   );
 }
-/* if personal-todo-component.on then
-     <PersonalTodo />
-     elseif todo-component.on then
-     <Todo /> 
-     */
 
 
 export default Page;

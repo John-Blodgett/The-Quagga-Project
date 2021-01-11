@@ -1,0 +1,15 @@
+#navbar-component {
+    display: inline-block;
+    width: 12vw;
+    text-align: center;
+    line-height: 4vh;
+    margin: 0 auto;
+}
+
+#navbar-component:hover {
+    background-color: lightgray;
+}
+
+#navbar-component:active {
+    background-color: gray;
+}
