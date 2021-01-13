@@ -1,0 +1,134 @@
+.title{
+    position: absolute;
+    width: 380px;
+    height: 69px;
+    left: 4vw;
+    top: 15px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+
+}
+
+.customTaskFrame {
+    width: 497px;
+    height: 531px;
+    background: #FFFFFF;
+}
+.classLabel{
+    position: absolute;
+    width: 147px;
+    height: 51px;
+    left: 55px;
+    top: 147px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+.classInput{
+    position: absolute;
+    width: 241px;
+    height: 34px;
+    left: 189px;
+    top: 147px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.dueDateLabel{
+    position: absolute;
+    width: 103px;
+    height: 28px;
+    left: 58px;
+    top: 209px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+.dueDateInput{
+    position: absolute;
+    width: 241px;
+    height: 34px;
+    left: 189px;
+    top: 206px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.pointValueLabel{
+    position: absolute;
+    width: 366px;
+    height: 100px;
+    left: -85px;
+    top: 270px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+
+    color: #000000;
+}
+.pointValueInput{
+    position: absolute;
+    width: 241px;
+    height: 37px;
+    left: 189px;
+    top: 270px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.descLabel{
+    position: absolute;
+    width: 351px;
+    height: 51px;
+    left: -78px;
+    top: 342px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+.descInput{
+    position: absolute;
+    width: 241px;
+    height: 155px;
+    left: 189px;
+    top: 342px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    }
+.background{
+    position: absolute;
+    width: 32vw;
+    height: 97px;
+    left: -24px;
+    top: 2px;
+
+    background: url('../images/Zebra\ 4.png');
+    /* opacity: 0.2; */
+    /* border-radius: 50px; */
+}
