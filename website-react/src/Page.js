@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Page.css';
 import Todo from './components/Todo.js'
 import SortBy from './components/SortBy.js'
+import CustomTask from './components/CustomTask.js'
 
 function Faq() {
   return(
@@ -40,6 +41,7 @@ function Page() {
   return (
     <>
       <Faq />
+      {/* <CustomTask /> */}
     </>
   );
 }
