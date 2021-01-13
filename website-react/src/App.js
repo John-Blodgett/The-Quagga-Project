@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import NavBar from './NavBar';
 import Page from './Page';
+import Faq from './Faq';
 import './App.css';
 import './index.css';
 
 
 function App() {
+    const [renderedComponent, setRenderedComponent] = useState([]);
+
+    useEffect(() => {
+        console.log(renderedComponent);
+    }, [renderedComponent])
+
+    useEffect(() => {
+        setRenderedComponent(<Faq key={1}/>)
+        console.log(renderedComponent);
+    }, [])
+
     return (
-      <>
-        <Header />
-        <NavBar />
-        <Page />
-      </>
+        <>
+            <Header />
+            <NavBar setRenderedComponent={setRenderedComponent} />
+            <Page renderedComponent={renderedComponent} />
+        </>
     );
 }
 
