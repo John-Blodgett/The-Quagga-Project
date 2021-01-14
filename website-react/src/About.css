@@ -1,0 +1,23 @@
+body {
+  background-color: "white";
+}
+#web-header-master {
+  width: 100vw;
+  height: 10vh;
+  background-color: #0D3B66;
+}
+
+#web-header-logo {
+  display: inline-block;
+}
+
+#web-header-title {
+  display: inline-block;
+}
+
+#zebra-logo {
+  background-image: image("Logo.png");
+}
+#zebra-print{
+  background-image: image("Zebra 5.png");
+}
