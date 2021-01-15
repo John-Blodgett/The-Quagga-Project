@@ -1,0 +1,65 @@
+.loginFrame {
+    width: 275px;
+    height: 300px;
+    background: lightgrey; /* temp for developing */
+    border-radius: 10px;
+    position: center;
+    margin: 0 auto;
+    /* border: 3px solid black; */
+}
+
+.background {
+    background-color: #0D3B66;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.loginContent {
+    align-items: center;
+    justify-content: center;
+    padding: 5% 10%; /* top/bottom right/left */
+}
+
+.title {
+    font-family: Roboto;
+    color: white;
+    font-style: normal;
+    font-weight: bold;
+    font-size: xx-large;
+    line-height: 48px;
+    text-align: center;
+}
+
+.input {
+    width: 96%; /* gets same width as buttons */
+}
+
+#passwordLabel {
+    padding-top: 5%;
+}
+
+#loginButton {
+    width: 100%;
+    display: block;
+    margin-top: 12%;
+    margin-bottom: 2.5%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: #0D3B66;
+    color: white;
+    font-size: 16px;
+}
+
+.horizButtonsDiv {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.horizButtons {
+    width: 50%;
+}
+
+
+
+
+
