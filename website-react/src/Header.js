@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import logo from './images/Logo.png'
 
 function Header() {
   return (
@@ -7,7 +8,7 @@ function Header() {
         <div id="web-header-master">
             <div id="zebra-background">
                 <div id="web-header-logo">
-                    <img src={"/Logo.png"} alt="Quagga Logo"></img>
+                    <img src={logo} alt="Quagga Logo"></img>
                 </div>
                 <div id="web-header-title">
                     Quagga
