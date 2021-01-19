@@ -1,19 +1,10 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
 import './About.css';
-import logo from './Logo.png';
 //import zebra from './Zebra 5.png'
 //import Todo from './components/Todo.js'
 //import SortBy from './components/SortBy.js'
-console.log(logo);
-function Header() {
-  return(
-  <div id = "web-header-master">
-      <div id = "zebra-logo">
-      <img src={logo} alt="Logo" />
-    </div>
-  </div>)
-}
+
 function About() {
   return(
   <>
@@ -61,7 +52,6 @@ function About() {
 function Page() {
   return (
     <>
-    <Header />
       <About />
     </>
   );

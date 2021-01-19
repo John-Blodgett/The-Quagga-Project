@@ -1,18 +1,7 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
 import './Completed.css';
-import logo from './Logo.png';
-//import zebra from './Zebra 5.png'
 
-console.log(logo);
-function Header() {
-  return(
-  <div id = "web-header-master">
-      <div id = "zebra-logo">
-      <img src={logo} alt="Logo" />
-    </div>
-  </div>)
-}
 function Completed() {
     return(
     <>
@@ -73,7 +62,6 @@ function Completed() {
   function Page() {
     return (
       <>
-      <Header />
         <Completed/>
       </>
     );
