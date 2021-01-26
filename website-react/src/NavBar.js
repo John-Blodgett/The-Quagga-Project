@@ -4,6 +4,7 @@ import NavBarComponent from './components/NavBarComponent';
 import Todo from './components/Todo.js'
 import SortBy from './components/SortBy.js'
 import Faq from './Faq'
+import About from './About'
 
 function NavBarItems({setRenderedComponent}) {
     const [componentNames, setComponentNames] = useState([
@@ -15,7 +16,6 @@ function NavBarItems({setRenderedComponent}) {
 
     useEffect(() => {
         for (let component of componentNames) {
-            console.log(component);
             if (component.state === true) {
                 let comp;
                 if (component.name === 'FAQ') {
@@ -31,7 +31,7 @@ function NavBarItems({setRenderedComponent}) {
                     comp = <Todo key={1}/>;
                 }
                 else if (component.name === 'About Quagga') {
-                    comp = <Faq key={1}/>;
+                    comp = <About key={1}/>;
                 }
                 setRenderedComponent(comp);
             }
