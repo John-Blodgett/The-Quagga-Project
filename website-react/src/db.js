@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import { db } from './base';
 
 function getAllDocuments(collectionName) {
@@ -40,4 +41,54 @@ function getSpecificDocumentData(collectionName, documentName) {
         })
 }
 
-export { getAllDocuments, getAllDocumentData, getSpecificDocumentData };
+function postDocument(collectionName, documentName, document) {
+    db.collection(collectionName).doc(documentName).set(document)
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+}
+
+function mergeDocumentData(collectionName, documentName, mergeData) {
+    db.collection(collectionName).doc(documentName).set(mergeData, {merge: true})
+        .then(() => {
+            console.log("Document successfully merged!");
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+}
+
+function delDocument(collectionName, documentName) {
+    db.collection(collectionName).doc(documentName).delete()
+        .then(() => {
+            console.log("Document successfully deleted!")
+        })
+        .catch(() => {
+            console.log(e)
+        });
+}
+
+function delField(collectionName, documentName, fieldName) {
+    let updateObj = {}
+    updateObj[fieldName] = firebase.firestore.FieldValue.delete();
+    
+    db.collection(collectionName).doc(documentName).update(updateObj);
+}
+
+function updateField(collectionName, documentName, fieldName, fieldValue) {
+    let updateObj = {}
+    updateObj[fieldName] = fieldValue;
+
+    delField(collectionName, documentName, fieldName)
+        .then(() => {
+            mergeDocumentData(collectionName, documentName, updateObj);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+}
+
+export { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField };

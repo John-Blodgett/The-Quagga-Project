@@ -5,7 +5,7 @@ import Page from './Page';
 import Faq from './Faq';
 import './App.css';
 import './index.css';
-import { getAllDocuments, getAllDocumentData, getSpecificDocumentData } from './db';
+import { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField } from './db';
 
 async function dataHandling() {
     // let documentIDs = await getAllDocuments("Users");
