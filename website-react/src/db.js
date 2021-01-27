@@ -66,7 +66,7 @@ function delDocument(collectionName, documentName) {
         .then(() => {
             console.log("Document successfully deleted!")
         })
-        .catch(() => {
+        .catch((e) => {
             console.log(e)
         });
 }
