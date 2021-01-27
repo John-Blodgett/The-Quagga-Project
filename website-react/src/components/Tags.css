@@ -1,0 +1,101 @@
+.TagsFrame{
+    width: 261px;
+    height: 70px;
+
+    border-color: #000000;
+    border-style: solid;
+}
+.TagsTitle{
+    width: 44px;
+    height: 28px;
+    left: 4px;
+    top: 5px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 14px;
+
+    color: #000000;
+}
+.CurTags > div{
+    width: 68px;
+    height: 17px;
+    border-style: solid;
+    border-color: #000000;
+}
+.TagName{
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+}
+.CurTags > div:first-child{
+    position: absolute;
+    left: 46px;
+    top: 4px;
+    background: #C4C4C4;
+}
+.CurTags > div:nth-child(2){
+    position: absolute;
+    left: 124px;
+    top: 4px;
+    background: #19B1BB;
+
+}
+.CurTags > div:nth-child(3){
+    position: absolute;
+    left: 46px;
+    top: 30px;
+    background: #CD18EA;
+}
+.CurTags > div:nth-child(4){
+    position: absolute;
+    left: 124px;
+    top: 30px;
+    background: #FFE794;
+}
+.AddTag:hover{
+    cursor: pointer;
+}
+.DelTag:hover{
+    cursor: pointer;
+}
+.AddTag{
+    position: absolute;
+    width: 44px;
+    height: 14px;
+    left: 213px;
+    top: 6px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+    text-decoration-line: underline;
+
+    color: #000000;
+}
+.DelTag{
+        position: absolute;
+        width: 44px;
+        height: 14px;
+        left: 213px;
+        top: 30px;
+    
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+    
+        text-decoration-line: underline;
+
+        color: #000000;
+}
