@@ -5,14 +5,16 @@ import Page from './Page';
 import Faq from './Faq';
 import './App.css';
 import './index.css';
+import Tags from './components/Tags'
 
 
 function App() {
     const [renderedComponent, setRenderedComponent] = useState([]);
 
-    useEffect(() => {
-        console.log(renderedComponent);
-    }, [renderedComponent])
+    
+    // useEffect(() => {
+    //     console.npmlog(renderedComponent);
+    // }, [renderedComponent])
 
     useEffect(() => {
         setRenderedComponent(<Faq key={1}/>)
@@ -21,9 +23,10 @@ function App() {
 
     return (
         <>
-            <Header />
+            {/* <Header />
             <NavBar setRenderedComponent={setRenderedComponent} />
-            <Page renderedComponent={renderedComponent} />
+            <Page renderedComponent={renderedComponent} /> */}
+            <Tags />
         </>
     );
 }

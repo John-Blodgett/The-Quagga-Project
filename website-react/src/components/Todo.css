@@ -1,27 +1,61 @@
 .todoFrame {
     position: absolute;
+    left: 2%;
     display: grid;
-    width: 400px;
-    grid-template-rows: 75px;
+    width: 96vw;
+    grid-template-rows: 10vh;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-height: 600px;
+    max-height: 80vh;
+    max-width: 96vw;
+    overflow: scroll;
+    
 }
-.todoFrame > asgn {
+.todoFrame::-webkit-scrollbar {
+    display: none;
+}
+.todoFrame > div {
     display: grid;
-    grid-template-columns: 25% 20% 50% 5%;
+    grid-template-columns: 67% 33%;
     border: 1px solid #0D3B66;
     border-top: 1px solid #0D3B66;
     border-bottom: 1px solid #0D3B66;
-    line-height: 75px;
+    /* line-height: 75px; */
     
 
 }
-.todoFrame > asgn:first-child {
+.todoFrame > div:first-child {
     background-color: #F95837;
 }
-.todoFrame > asgn:nth-child(2) {
+.todoFrame > div:nth-child(2) {
     background-color: #FF7153;
+}
+.todoFrame > div:nth-child(3) {
+    background-color: #EE964B;
+}
+.todoFrame > div:nth-child(4) {
+    background-color: #F3BC2F;
+}
+.todoFrame > div:nth-child(5) {
+    background-color: #F4D35E;
+}
+.todoFrame > div:nth-child(6) {
+    background-color: #FFE794;
+
+}
+.todoFrame > div:nth-child(7) {
+    background-color: #FAF0CA;
+
+}
+.todoFrame > div:nth-child(8) {
+    background-color: #E1E1E1;
+
+}
+
+.otherInfo{
+    display: inline-grid;
+    width: 64vw;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 
 
@@ -33,19 +67,26 @@
     
     padding-left: 15px;
 }
-
-.todoDesc {
+.todoClassName {
     font-family: Roboto;
     color: black;
-    font-weight: 700;
+    display: inherit;
+    padding-left: 15px;
+}
+
+.SeeMore {
+    font-family: Roboto;
+    color: black;
     background-color: inherit;
+    display: inherit;
     height: 28px;
 }
 .todoPointsPossible {
     font-family: Roboto;
     color: black;
-    font-weight: 700;
     background-color: inherit;
+    display: inherit;
     height: 28px;
+    padding-left: 1.5vw;
 }
 

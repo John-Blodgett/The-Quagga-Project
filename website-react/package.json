@@ -9,8 +9,10 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "ajv": "^6.8.1",
+    "cors": "^2.8.5",
     "jest": "^26.6.0",
     "react": "^17.0.1",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.1",
     "react-test-renderer": "^17.0.1",
@@ -53,5 +55,6 @@
       "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
     }
-  }
+  },
+  "proxy": "https://canvas.calpoly.edu/"
 }
