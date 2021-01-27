@@ -1,4 +1,5 @@
-describe('All Tests', function() {
+describe('Individual Assignment: Acceptance Testing using Cypress', function() {
+    
     it('Johns Test', function(){
         cy.visit("http://localhost:3000/")
 
@@ -30,5 +31,11 @@ describe('All Tests', function() {
         cy.get('.CustomInput')
           .type('Urgent')
           .should('have.value', 'Urgent')
+    })
+
+    it('Chris\'s Tests', () => {
+        cy.visit("https://localhost:3000/");
+
+        cy.get('.DelTag').click(); // functionality not implemented yet
     })
 })
