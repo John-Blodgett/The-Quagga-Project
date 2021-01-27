@@ -19,7 +19,7 @@ export default function AddTag(props) {
     "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", 
     "#ffc107", "#ff9800",  "#795548", "#607d8b", "#d6d4d4"]
         return (
-            <div className='AddTagFrame'>
+            <div className='AddTagFrame' test='hi'>
                 <div className = 'SuggestionsFrame'></div>
                     <div className = 'SuggestTitle'>Suggestions</div>
                     <div className = 'SuggestTagsFrame'>
