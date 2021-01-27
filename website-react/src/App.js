@@ -6,7 +6,18 @@ import Faq from './Faq';
 import './App.css';
 import './index.css';
 import Tags from './components/Tags'
+import { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField } from './db';
 
+async function dataHandling() {
+    // let documentIDs = await getAllDocuments("Users");
+    // console.log(documentIDs);
+
+    // let documentIDsAndData = await getAllDocumentData("Users");
+    // console.log(documentIDsAndData);
+
+    let data = await getSpecificDocumentData("Users", "Sullivan");
+    console.log(data);
+}
 
 function App() {
     const [renderedComponent, setRenderedComponent] = useState([]);
@@ -18,7 +29,7 @@ function App() {
 
     useEffect(() => {
         setRenderedComponent(<Faq key={1}/>)
-        console.log(renderedComponent);
+        dataHandling();
     }, [])
 
     return (
