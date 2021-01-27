@@ -16,7 +16,6 @@ function NavBarItems({setRenderedComponent}) {
 
     useEffect(() => {
         for (let component of componentNames) {
-            console.log(component);
             if (component.state === true) {
                 let comp;
                 if (component.name === 'FAQ') {
