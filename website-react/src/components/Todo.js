@@ -1,32 +1,66 @@
 import React from 'react';
 import './Todo.css';
-
+import { useState, useEffect } from 'react';
+import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../Functions.js'
+var assignments = []
 export default function Todo() {
-    var sampleAssignment = {
-        'name': 'HW10',
-        'desc': 'HW10 is blah blah blah',
-        'pointsPossible': 10,
-        'className': 'CSC309',
-        'id' : 1
-        };
-    var sampleAssignment2 = {
-        'name': 'HW20',
-        'desc': 'HW20 Sucks',
-        'pointsPossible': 30,
-        'className': 'CSC309',
-        'id' : 2
-        };
-    const sortedAssignemnts = [sampleAssignment, sampleAssignment2]
+    
+    const [allCourseAssn, setAllCourseAssn] = useState([]);
+    
+    const [courseIdNamePairs, setcourseIdNamePAirs] = useState({});
+    const [numClasses, setNumClasses] = useState(10);
+    
+    const tokStr = 'ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1'
+    useEffect(()=>{
+            getRequest(`/api/v1/courses`, tokStr)
+            .then(res => {
+            const classes = res.data;
+            const enrollment_term = 139;
+            console.log(classes)
+            var courseId = parseCoursesId(classes, enrollment_term);
+            setNumClasses(courseId.length)
+            for (var i = 0; i < courseId.length; i++){
+                getAssignmentObj(tokStr, courseId[i])
+                .then(res => {
+                    (setAllCourseAssn(allCourseAssn => [...allCourseAssn, res.data]))
+                    if (i === numClasses){
+                        for (let i of allCourseAssn) {
+                            for (let assn of i){
+                                assignments.push(assn)
+                            }
+                        }
+                    }
+                })
+                
+                };})
+            .catch(function (error){
+                                    console.log(error)
+                                })
+
+            
+         }, []) 
 
     return (
         <div className = 'todoFrame'>
-            {sortedAssignemnts.map(assign =>{
-            return <asgn key = {assign.id}>  
-                    <div className = 'todoName'>{assign.name}</div>
-                    <div className = 'todoClassName'>{assign.className}</div>
-                    <div className = 'todoDesc'>{assign.desc}</div>
-                    <div className = 'todoPointsPossible'>/{assign.pointsPossible}</div>
-                </asgn>
+            {assignments.map(assign =>{
+                const dueDate = parseDueDate(assign.due_at);
+                const url = changeUrl(assign.html_url)
+            return <div key = {assign.id}>  
+                        <div className = 'allAssignInfo'>
+                            <div className = 'todoName'>{assign.name}</div>
+                            <div className = 'otherInfo'>
+                                <div className = 'todoPointsPossible'>/{assign.points_possible}</div>
+                                <div className = 'dueAt'>Due: {dueDate}</div>
+                                <div className = 'todoClassName'>{courseIdNamePairs[assign.course_id]}</div>
+                                <a className = 'See More' href={url}>See more</a>
+                               
+                            </div>
+                        </div>
+                        <div className = 'tagInfo'>
+
+                        </div>
+
+                </div>
             })}
        </div>
     )

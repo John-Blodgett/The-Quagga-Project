@@ -5,6 +5,7 @@ import Page from './Page';
 import Faq from './Faq';
 import './App.css';
 import './index.css';
+import Tags from './components/Tags'
 import { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField } from './db';
 
 async function dataHandling() {
@@ -21,6 +22,11 @@ async function dataHandling() {
 function App() {
     const [renderedComponent, setRenderedComponent] = useState([]);
 
+    
+    // useEffect(() => {
+    //     console.npmlog(renderedComponent);
+    // }, [renderedComponent])
+
     useEffect(() => {
         setRenderedComponent(<Faq key={1}/>)
         dataHandling();
@@ -28,9 +34,10 @@ function App() {
 
     return (
         <>
-            <Header />
+            {/* <Header />
             <NavBar setRenderedComponent={setRenderedComponent} />
-            <Page renderedComponent={renderedComponent} />
+            <Page renderedComponent={renderedComponent} /> */}
+            <Tags />
         </>
     );
 }
