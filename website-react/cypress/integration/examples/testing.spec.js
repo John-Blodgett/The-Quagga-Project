@@ -38,4 +38,16 @@ describe('Individual Assignment: Acceptance Testing using Cypress', function() {
 
         cy.get('.DelTag').click(); // functionality not implemented yet
     })
+    it('Brandons Tests', () =>{
+        cy.visit("https://localhost:3000/")
+        cy.get('.AddTag').click()
+        cy.get('.TagsTitle').contains('Tags:')
+        cy.get('.AddTagFrame')
+        cy.get('.CreateNewFrame')
+
+        cy.get('.CustomInput')
+          .type('309')
+          .should('have.value', '309')
+
+    })
 })
