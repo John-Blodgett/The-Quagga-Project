@@ -52,7 +52,7 @@ export function parseRecentlyCompleted(jsonObject){
 
         var obj = { course: jsonObject[i]["course"]["id"],
                     assignment_id: jsonObject[i]["assignment_id"],
-                    assignment_description: jsonObject[i]["assignment"]["description"],
+                    assignment_name: jsonObject[i]["assignment"]["name"],
                     entered_score: jsonObject[i]["entered_score"],
                     points_possible: jsonObject[i]["assignment"]["points_possible"]}
 
