@@ -1,6 +1,24 @@
 import React from 'react'
 
+//testing 
+import { useEffect } from 'react';
+import { getRecentlyCompleted, parseRecentlyCompleted } from './Functions.js'
+
 export default function Faq() {
+    
+    //testing Parse Recently Completed.
+    /* const tokStr = '15279~dbKYca95A1oQ0xR2RT6E8IeDVQz7mERY7MGeLGYrkSfZQc3pp0TJP06scthYfDNZ'
+    useEffect(()=>{
+                    getRecentlyCompleted(tokStr)
+                    .then(result => {
+                        const data = result.data;
+                        const parse_data = parseRecentlyCompleted(data)
+                        console.log(parse_data);
+                    })
+                    .catch(function (error){
+                        console.log(error)
+                    })}, []) */
+
     return (
         <>
             <h1 style={{textAlign: "center"}}>
@@ -24,6 +42,8 @@ export default function Faq() {
                 <strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.
             </ul>
             </p>
+            
         </>
+        
     )
 }
