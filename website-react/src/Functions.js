@@ -40,3 +40,8 @@ export async function getAssignmentObj(token, courseId) {
     return await getRequest("/api/v1/courses/" + courseId + "/assignments/", token);
 }
 
+
+export function getRecentlyCompleted(token) {
+    return await getRequest("api")
+}
+
