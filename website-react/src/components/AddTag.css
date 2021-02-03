@@ -1,8 +1,16 @@
 .AddTagFrame{
-    position: relative;
+    position: absolute;
     left: 17vw;
     width: 260px;
     height: 134px;
+
+    background: #0D3B66;
+}
+.DelTagFrame{
+    position: absolute;
+    left: 15vw;
+    width: 180px;
+    height: 60px;
 
     background: #0D3B66;
 }
@@ -79,7 +87,7 @@ line-height: 14px;
 color: #ffffff;
 }
 .CustomInput{
-    position: relative;
+    position: absolute;
     width: 100px;
 height: 15px;
 left: 70px;
@@ -120,6 +128,13 @@ text-align: center;
     font-size: 12px;
     line-height: 14px;
     color: #000000;
+}
+.SuggestionsFrame{
+    width: 183px;
+}
+.SuggestTagsFrame{
+    width: 183px;
+    height: inherit;
 }
 .SuggestTagsFrame > div:nth-child(1){
     position: absolute;
