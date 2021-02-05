@@ -40,14 +40,15 @@ function App() {
 
     return (
         <>
-            {/* <Header />
+            <Header />
             <NavBar setRenderedComponent={setRenderedComponent} />
-            <Page renderedComponent={renderedComponent} /> */}
+            <Page renderedComponent={renderedComponent} />
             {/* <Tags /> */}
 
             {/* <input type="button" value="Open popup" onClick={togglePopup}/>
             {popupIsOpen && <Login handleClose={togglePopup}/>} */}
 
+            <Page renderedComponent={renderedComponent} />
         </>
     );
 }

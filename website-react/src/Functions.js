@@ -40,3 +40,25 @@ export async function getAssignmentObj(token, courseId) {
     return await getRequest("/api/v1/courses/" + courseId + "/assignments/", token);
 }
 
+///users/self/graded_submissions?include[]=total_scores
+export async function getRecentlyCompleted(token) {
+    return await getRequest("/api/v1/users/self/graded_submissions?include[]=course&include[]=assignment", token);
+}
+
+//Parse the JSON object .data of recently completed
+export function parseRecentlyCompleted(jsonObject){
+    var gradedList = [];
+    for (var i in jsonObject){
+
+        var obj = { course: jsonObject[i]["course"]["id"],
+                    assignment_id: jsonObject[i]["assignment_id"],
+                    assignment_name: jsonObject[i]["assignment"]["name"],
+                    entered_score: jsonObject[i]["entered_score"],
+                    points_possible: jsonObject[i]["assignment"]["points_possible"]}
+
+        gradedList.push(obj);
+
+    }
+    return (gradedList);
+}
+

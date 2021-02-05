@@ -1,9 +1,11 @@
 .TagsFrame{
+    position: relative;
     width: 261px;
-    height: 70px;
+    height: 10vh;
 
-    border-color: #000000;
-    border-style: solid;
+    /* border-color: #000000;
+    border-style: solid; */
+    left: 50%;
 }
 .TagsTitle{
     width: 44px;
@@ -34,31 +36,7 @@
     line-height: 14px;
     color: #000000;
 }
-.CurTags > div:first-child{
-    position: absolute;
-    left: 46px;
-    top: 4px;
-    background: #C4C4C4;
-}
-.CurTags > div:nth-child(2){
-    position: absolute;
-    left: 124px;
-    top: 4px;
-    background: #19B1BB;
 
-}
-.CurTags > div:nth-child(3){
-    position: absolute;
-    left: 46px;
-    top: 30px;
-    background: #CD18EA;
-}
-.CurTags > div:nth-child(4){
-    position: absolute;
-    left: 124px;
-    top: 30px;
-    background: #FFE794;
-}
 .AddTag:hover{
     cursor: pointer;
 }
@@ -83,7 +61,7 @@
     color: #000000;
 }
 .DelTag{
-        position: absolute;
+        position: relative;
         width: 44px;
         height: 14px;
         left: 213px;
