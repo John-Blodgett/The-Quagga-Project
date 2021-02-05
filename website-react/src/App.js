@@ -7,6 +7,7 @@ import './App.css';
 import './index.css';
 import Tags from './components/Tags'
 import { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField } from './db';
+import { getRecentlyCompleted, parseRecentlyCompleted } from './Functions.js'
 
 async function dataHandling() {
     // let documentIDs = await getAllDocuments("Users");
@@ -34,10 +35,10 @@ function App() {
 
     return (
         <>
-            {/* <Header />
+            <Header />
             <NavBar setRenderedComponent={setRenderedComponent} />
-            <Page renderedComponent={renderedComponent} /> */}
-            <Tags />
+            <Page renderedComponent={renderedComponent} />
+            {/*<Tags />*/}
         </>
     );
 }
