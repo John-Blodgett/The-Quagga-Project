@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../Functions.js'
 import Tags from './Tags'
 
+
 export default function Todo() {
     
     const [allCourseAssn, setAllCourseAssn] = useState([]);
     
     const [courseIdNamePairs, setcourseIdNamePAirs] = useState({});
     const [numClasses, setNumClasses] = useState(10);
-    const temparr = []
 
     const tokStr = 'ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1'
     useEffect(()=>{
@@ -19,6 +19,7 @@ export default function Todo() {
             const classes = res.data;
             const enrollment_term = 139;
             var courseId = parseCoursesId(classes, enrollment_term);
+            var temparr = []
             setNumClasses(courseId.length)
             for (var i = 0; i < courseId.length; i++){
                 getAssignmentObj(tokStr, courseId[i])
@@ -26,10 +27,17 @@ export default function Todo() {
                     for (let assn of res.data)
                         {
                             temparr.push(assn)
-                        }})
-                        if (i === (courseId.length -1))
+                        }
+                        console.log(i)
+                        if (i === (courseId.length))
                         {
-                            setAllCourseAssn(temparr)};
+                        const toDoAssignments = temparr.filter((ele) => {
+                            let d1 = new Date (ele.due_at);
+                            let d2 = Date.now();
+                            return (d1 - d2) > 0;
+                        });
+                            setAllCourseAssn(toDoAssignments)};
+                        })
                 }})
                 .catch(function (error){
                     console.log(error)
