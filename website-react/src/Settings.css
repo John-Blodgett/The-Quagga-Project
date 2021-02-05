@@ -2,6 +2,9 @@
     list-style: none;
     margin:0;
     padding: 0;
+    position: relative;
+    left: 80%;
+    top: -10vh;
   }
 a:link, a:visited{
   color: black;
@@ -16,12 +19,16 @@ a:link, a:visited{
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
   #web-cog-wheel > img {
     float: right;
     display: flex;
     width: 30px;
     height: 30px;
+    left: 45%;
+    position: relative;
+    top: -.8vh;
   }
   .dropdown{
   top: 58px;
@@ -31,6 +38,9 @@ a:link, a:visited{
   }
   .menu-item{
     height: 50px;
+    left: -15vw;
+    top: 10vh;
+    position: relative;
   }
   .menu-item:hover{
     background-color: #525357;

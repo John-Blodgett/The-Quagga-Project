@@ -2,47 +2,51 @@ import React from 'react';
 import './Todo.css';
 import { useState, useEffect } from 'react';
 import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../Functions.js'
-var assignments = []
+import Tags from './Tags'
+
+
 export default function Todo() {
     
     const [allCourseAssn, setAllCourseAssn] = useState([]);
     
     const [courseIdNamePairs, setcourseIdNamePAirs] = useState({});
     const [numClasses, setNumClasses] = useState(10);
-    
+
     const tokStr = 'ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1'
     useEffect(()=>{
             getRequest(`/api/v1/courses`, tokStr)
             .then(res => {
             const classes = res.data;
             const enrollment_term = 139;
-            console.log(classes)
             var courseId = parseCoursesId(classes, enrollment_term);
+            var temparr = []
             setNumClasses(courseId.length)
             for (var i = 0; i < courseId.length; i++){
                 getAssignmentObj(tokStr, courseId[i])
                 .then(res => {
-                    (setAllCourseAssn(allCourseAssn => [...allCourseAssn, res.data]))
-                    if (i === numClasses){
-                        for (let i of allCourseAssn) {
-                            for (let assn of i){
-                                assignments.push(assn)
-                            }
+                    for (let assn of res.data)
+                        {
+                            temparr.push(assn)
                         }
-                    }
+                        console.log(i)
+                        if (i === (courseId.length))
+                        {
+                        const toDoAssignments = temparr.filter((ele) => {
+                            let d1 = new Date (ele.due_at);
+                            let d2 = Date.now();
+                            return (d1 - d2) > 0;
+                        });
+                            setAllCourseAssn(toDoAssignments)};
+                        })
+                }})
+                .catch(function (error){
+                    console.log(error)
                 })
-                
-                };})
-            .catch(function (error){
-                                    console.log(error)
-                                })
-
-            
          }, []) 
 
     return (
         <div className = 'todoFrame'>
-            {assignments.map(assign =>{
+            {allCourseAssn.map(assign =>{
                 const dueDate = parseDueDate(assign.due_at);
                 const url = changeUrl(assign.html_url)
             return <div key = {assign.id}>  
@@ -53,12 +57,13 @@ export default function Todo() {
                                 <div className = 'dueAt'>Due: {dueDate}</div>
                                 <div className = 'todoClassName'>{courseIdNamePairs[assign.course_id]}</div>
                                 <a className = 'See More' href={url}>See more</a>
-                               
+                                <div className = 'tagInfo'>
+                                <Tags></Tags>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div className = 'tagInfo'>
-
-                        </div>
+                        
 
                 </div>
             })}
