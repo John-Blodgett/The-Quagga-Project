@@ -14,12 +14,8 @@ function Header() {
                 <div id="web-header-title">
                     Quagga
                 </div>
-               
-                {/* <div id="web-cog-wheel">
-                    <img src={"/cogWheel2.png"} alt="Cog Wheel"></img>
-                </div> */}
+                <Settings />
             </div>
-            <Settings />
         </div>
     </>
   );

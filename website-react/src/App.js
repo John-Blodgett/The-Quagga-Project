@@ -9,16 +9,10 @@ import Tags from './components/Tags';
 import Login from './login/Login';
 import SignUp from './login/SignUp';
 import { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField } from './db';
+import { getRecentlyCompleted, parseRecentlyCompleted } from './Functions.js'
 
 async function dataHandling() {
-    // let documentIDs = await getAllDocuments("Users");
-    // console.log(documentIDs);
-
-    // let documentIDsAndData = await getAllDocumentData("Users");
-    // console.log(documentIDsAndData);
-
-    let data = await getSpecificDocumentData("Users", "Sullivan");
-    console.log(data);
+    
 }
 
 function App() {
@@ -43,12 +37,9 @@ function App() {
             <Header />
             <NavBar setRenderedComponent={setRenderedComponent} />
             <Page renderedComponent={renderedComponent} />
-            {/* <Tags /> */}
 
             {/* <input type="button" value="Open popup" onClick={togglePopup}/>
             {popupIsOpen && <Login handleClose={togglePopup}/>} */}
-
-            <Page renderedComponent={renderedComponent} />
         </>
     );
 }
