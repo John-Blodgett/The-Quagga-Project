@@ -4,16 +4,19 @@ import { useState, useEffect } from 'react';
 import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../../Functions.js'
 import Tags from './Tags.js'
 
-async function sortAndSet(courseId, tokStr, setAllCourseAssn) {
+async function sortAndSet(courseId, tokStr, setAllCourseAssn, courseNames) {
     let temparr = []
 
     for (var i = 0; i < courseId.length; i++) {
         let res = await getAssignmentObj(tokStr, courseId[i]);
-        console.log(res);
         for (let data of res.data) {
             temparr.push(data);
         }
     }
+    for (var j = 0; j < temparr.length; j++){
+        temparr[j]['course'] = courseNames[temparr[j]['course_id']]
+    }
+
 
     const toDoAssignments = temparr.filter((ele) => {
         let d1 = new Date(ele.due_at);
@@ -32,7 +35,6 @@ async function sortAndSet(courseId, tokStr, setAllCourseAssn) {
 
 export default function Todo() {
     const [allCourseAssn, setAllCourseAssn] = useState([]);
-    const [courseIdNamePairs, setcourseIdNamePairs] = useState({});
 
     const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'SchoolToDoLocalStorageKey';
     const tokStr = 'ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1';
@@ -47,10 +49,9 @@ export default function Todo() {
             .then(async (res) => {
                 const classes = res.data;
                 const enrollment_term = 139;
-                var courseId = parseCoursesId(classes, enrollment_term);
+                var courseIdArr = parseCoursesId(classes, enrollment_term);
                 const courseNames = parseCourses(classes, enrollment_term)
-                setcourseIdNamePairs({...courseNames, courseNames})
-                let sortByDataToDoAssignments = await sortAndSet(courseId, tokStr, setAllCourseAssn);
+                let sortByDataToDoAssignments = await sortAndSet(courseIdArr, tokStr, setAllCourseAssn, courseNames);
                 localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortByDataToDoAssignments));
             });
     }, []) 
@@ -66,7 +67,7 @@ export default function Todo() {
                             <div className = 'otherInfo'>
                                 <div className = 'todoPointsPossible'>/{assign.points_possible}</div>
                                 <div className = 'dueAt'>Due: {dueDate}</div>
-                                <div className = 'todoClassName'>{courseIdNamePairs[assign.course_id]}</div>
+                                <div className = 'todoClassName'>{assign.course}</div>
                                 <a className = 'See More' href={url}>See more</a>
                                 <div className = 'tagInfo'>
                                 <Tags></Tags>
