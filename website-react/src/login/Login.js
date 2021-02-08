@@ -7,7 +7,7 @@ const Login = (props) => {
         <div className="loginFrame">
             <div className="loginBackground">
                     <div className="loginCloseIcon">
-                        <a href="#" onClick={props.handleClose}>
+                        <a href="#" onClick={props.handleClose}> {/* what does href="#" mean */}
                             <img id="loginCloseIconTag" src={closeIcon} onClick={props.handleClose} alt="Close Icon"></img>
                         </a>
                     </div>
