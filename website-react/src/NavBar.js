@@ -6,6 +6,9 @@ import SortBy from './components/SortBy.js'
 import Faq from './Faq'
 import About from './About'
 import Login from './login/Login';
+import Todo from './pages/Todo/Todo.js'
+import Faq from '../src/pages/Faq/Faq'
+import About from '../src/pages/About/About'
 
 function NavBarItems({setRenderedComponent}) {
     const [componentNames, setComponentNames] = useState([
