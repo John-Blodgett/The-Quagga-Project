@@ -14,7 +14,12 @@ Resources:
 	- HTML
 	- CSS
 	- JavaScript
+	- React
+	- Firebase
 	- Canvas API
+---
+Style Guide:
+	- ESLint 6
 
 # System Architecture
 
