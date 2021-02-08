@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export function parseCourses(jsonObject, enrollment_id){
-    var courseList = [];
+    var courseList = {};
     for (var i in jsonObject){
         if (jsonObject[i]["enrollment_term_id"] === enrollment_id){
-            courseList.push(jsonObject[i])
+            courseList[jsonObject[i]['id']] = jsonObject[i]['name']
         }
     }
     return (courseList);
