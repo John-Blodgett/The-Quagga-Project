@@ -23,7 +23,8 @@ function App() {
     // }, [renderedComponent])
 
     useEffect(() => {
-        setRenderedComponent(<Faq key={1}/>)
+        // setRenderedComponent(<Faq key={1}/>)
+        setRenderedComponent(<Login key={1}/>)
         dataHandling();
     }, [])
 
