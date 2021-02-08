@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import cogWheel from "./cogWheel2.png"
+import cogWheel from "./images/cogWheel2.png"
 import './Settings.css'
 
 function NavItem({props, open, setOpen}) {
