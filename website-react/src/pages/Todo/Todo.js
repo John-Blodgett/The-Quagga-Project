@@ -10,7 +10,7 @@ export default function Todo() {
     const [allCourseAssn, setAllCourseAssn] = useState([]);
     
     const [courseIdNamePairs, setcourseIdNamePAirs] = useState({});
-    const [numClasses, setNumClasses] = useState(10);
+    const [iValue, setIValue] = useState(0);
 
     const tokStr = 'ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1'
     useEffect(()=>{
@@ -20,16 +20,16 @@ export default function Todo() {
             const enrollment_term = 139;
             var courseId = parseCoursesId(classes, enrollment_term);
             var temparr = []
-            setNumClasses(courseId.length)
             for (var i = 0; i < courseId.length; i++){
+                setIValue(i)
                 getAssignmentObj(tokStr, courseId[i])
                 .then(res => {
                     for (let assn of res.data)
                         {
                             temparr.push(assn)
                         }
-                        console.log(i)
-                        if (i === (courseId.length))
+                        console.log(iValue)
+                        if (iValue === (courseId.length))
                         {
                         const toDoAssignments = temparr.filter((ele) => {
                             let d1 = new Date (ele.due_at);
