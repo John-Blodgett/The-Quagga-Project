@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBarComponent from './components/NavBarComponent';
 import SortBy from './components/SortBy.js';
-import Faq from './Faq';
-import About from './About';
 import Login from './login/Login';
 import Todo from './pages/Todo/Todo.js';
 import Faq from '../src/pages/Faq/Faq';
