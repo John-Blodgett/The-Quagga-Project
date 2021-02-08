@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './NavBar.css';
 import NavBarComponent from './components/NavBarComponent';
-import Todo from './components/Todo.js'
-import SortBy from './components/SortBy.js'
-import Faq from './Faq'
-import About from './About'
+import SortBy from './components/SortBy.js';
+import Faq from './Faq';
+import About from './About';
 import Login from './login/Login';
-import Todo from './pages/Todo/Todo.js'
-import Faq from '../src/pages/Faq/Faq'
-import About from '../src/pages/About/About'
+import Todo from './pages/Todo/Todo.js';
+import Faq from '../src/pages/Faq/Faq';
+import About from '../src/pages/About/About';
+import './NavBar.css';
 
 function NavBarItems({setRenderedComponent}) {
     const [componentNames, setComponentNames] = useState([
