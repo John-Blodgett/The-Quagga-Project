@@ -21,4 +21,6 @@ const SignUp = () => {
 
 export default SignUp;
 
+// NOTE: classnames need to be WAAAAAAAAAY more descriptive to avoid overlap w other components
+
 

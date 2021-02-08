@@ -35,6 +35,23 @@
     top: 1%;
 }
 
+.loginCloseIcon {
+    content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(41% - 30px);
+    top: calc(100vh - 82vh - 1px);
+    align-items: right;
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
+}
+
 .input {
     width: 96%; /* gets same width as buttons */
 }

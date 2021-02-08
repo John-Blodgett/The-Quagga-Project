@@ -5,10 +5,12 @@ import Todo from './components/Todo.js'
 import SortBy from './components/SortBy.js'
 import Faq from './Faq'
 import About from './About'
+import Login from './login/Login';
 
 function NavBarItems({setRenderedComponent}) {
     const [componentNames, setComponentNames] = useState([
-        { name: 'FAQ', state: true },
+        { name: 'Login', state: true },
+        { name: 'FAQ', state: false },
         { name: 'Personal To-do', state: false },
         { name: 'School To-do', state: false },
         { name: 'Completed', state: false },
@@ -18,7 +20,10 @@ function NavBarItems({setRenderedComponent}) {
         for (let component of componentNames) {
             if (component.state === true) {
                 let comp;
-                if (component.name === 'FAQ') {
+                if (component.name === 'Login') {
+                    comp = <Login key={1}/>;
+                }
+                else if (component.name === 'FAQ') {
                     comp = <Faq key={1}/>;
                 }
                 else if (component.name === 'Personal To-do') {
@@ -33,6 +38,7 @@ function NavBarItems({setRenderedComponent}) {
                 else if (component.name === 'About Quagga') {
                     comp = <About key={1}/>;
                 }
+                
                 setRenderedComponent(comp);
             }
         }

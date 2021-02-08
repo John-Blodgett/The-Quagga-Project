@@ -30,7 +30,8 @@ function App() {
     // }, [renderedComponent])
 
     useEffect(() => {
-        setRenderedComponent(<Faq key={1}/>)
+        // setRenderedComponent(<Faq key={1}/>)
+        setRenderedComponent(<Login key={1}/>)
         dataHandling();
     }, [])
 
@@ -48,7 +49,7 @@ function App() {
             {/* <input type="button" value="Open popup" onClick={togglePopup}/>
             {popupIsOpen && <Login handleClose={togglePopup}/>} */}
 
-            <Page renderedComponent={renderedComponent} />
+            {/* <Page renderedComponent={renderedComponent} /> */}
         </>
     );
 }

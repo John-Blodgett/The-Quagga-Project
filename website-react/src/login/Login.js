@@ -1,4 +1,5 @@
 import React from 'react';
+import closeIcon from "../images/closeIcon.png";
 import './Login.css';
 
 const Login = (props) => {
