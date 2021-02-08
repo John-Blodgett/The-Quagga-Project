@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './NavBar.css';
 import NavBarComponent from './components/NavBarComponent';
-import Todo from './components/Todo.js'
+import Todo from './pages/Todo/Todo.js'
 import SortBy from './components/SortBy.js'
-import Faq from './Faq'
-import About from './About'
+import Faq from '../src/pages/Faq/Faq'
+import About from '../src/pages/About/About'
 
 function NavBarItems({setRenderedComponent}) {
     const [componentNames, setComponentNames] = useState([

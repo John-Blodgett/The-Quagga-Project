@@ -1,8 +1,8 @@
 import React from 'react';
 import './Todo.css';
 import { useState, useEffect } from 'react';
-import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../Functions.js'
-import Tags from './Tags'
+import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../../Functions.js'
+import Tags from './Tags.js'
 
 
 export default function Todo() {

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import 'react-dropdown/style.css';
-import cogWheel from "./cogWheel2.png"
+import cogWheel from "./images/cogWheel2.png"
 import './Settings.css'
 
 function NavItem(props){

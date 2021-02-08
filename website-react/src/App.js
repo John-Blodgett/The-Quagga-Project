@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import NavBar from './NavBar';
 import Page from './Page';
-import Faq from './Faq';
+import Faq from './pages/Faq/Faq';
 import './App.css';
 import './index.css';
 import { getAllDocuments, getAllDocumentData, getSpecificDocumentData, postDocument, mergeDocumentData, delDocument, delField, updateField } from './db';

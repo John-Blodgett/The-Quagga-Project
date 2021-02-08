@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 
 export function parseCourses(jsonObject, enrollment_id){
     var courseList = [];
     for (var i in jsonObject){
-        if (jsonObject[i]["enrollment_term_id"] == enrollment_id){
+        if (jsonObject[i]["enrollment_term_id"] === enrollment_id){
             courseList.push(jsonObject[i])
         }
     }
@@ -14,7 +13,7 @@ export function parseCourses(jsonObject, enrollment_id){
 export function parseCoursesId(jsonObject, enrollment_id){
     var courseIdList = [];
     for (var i in jsonObject){
-        if (jsonObject[i]["enrollment_term_id"] == enrollment_id){
+        if (jsonObject[i]["enrollment_term_id"] === enrollment_id){
             courseIdList.push(jsonObject[i]["id"])
         }
     }

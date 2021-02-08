@@ -2,7 +2,7 @@ import React from 'react'
 
 //testing 
 import { useEffect } from 'react';
-import { getRecentlyCompleted, parseRecentlyCompleted } from './Functions.js'
+import { getRecentlyCompleted, parseRecentlyCompleted } from '../../Functions.js'
 
 export default function Faq() {
     
