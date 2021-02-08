@@ -1,8 +1,8 @@
 import React from 'react';
 import './Todo.css';
 import { useState, useEffect } from 'react';
-import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../Functions.js'
-import Tags from './Tags'
+import { parseCourses, parseCoursesId, parseDueDate, changeUrl, getRequest, getAssignmentObj} from '../../Functions.js'
+import Tags from './Tags.js'
 
 async function sortAndSet(courseId, tokStr, setAllCourseAssn) {
     let temparr = []
@@ -32,8 +32,7 @@ async function sortAndSet(courseId, tokStr, setAllCourseAssn) {
 
 export default function Todo() {
     const [allCourseAssn, setAllCourseAssn] = useState([]);
-    const [courseIdNamePairs, setcourseIdNamePAirs] = useState({});
-    const [numClasses, setNumClasses] = useState(10);
+    const [courseIdNamePairs, setcourseIdNamePairs] = useState({});
 
     const LOCAL_STORAGE_KEY_ASSIGNMENTS = 'SchoolToDoLocalStorageKey';
     const tokStr = 'ShQIftCLxz12Us487VaWX1dtG0sFmElzw17N6qzmksa3M917MXsIzOwO87VscBq1';
@@ -49,7 +48,8 @@ export default function Todo() {
                 const classes = res.data;
                 const enrollment_term = 139;
                 var courseId = parseCoursesId(classes, enrollment_term);
-                setNumClasses(courseId.length);
+                const courseNames = parseCourses(classes, enrollment_term)
+                setcourseIdNamePairs({...courseNames, courseNames})
                 let sortByDataToDoAssignments = await sortAndSet(courseId, tokStr, setAllCourseAssn);
                 console.log("set");
                 console.log(`sortByDataToDoAssignments ${sortByDataToDoAssignments}`);
