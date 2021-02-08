@@ -51,6 +51,8 @@ export default function Todo() {
                 var courseId = parseCoursesId(classes, enrollment_term);
                 setNumClasses(courseId.length);
                 let sortByDataToDoAssignments = await sortAndSet(courseId, tokStr, setAllCourseAssn);
+                console.log("set");
+                console.log(`sortByDataToDoAssignments ${sortByDataToDoAssignments}`);
                 localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(sortByDataToDoAssignments));
             });
     }, []) 

@@ -32,6 +32,8 @@ export function changeUrl(url){
 export async function getRequest(url, tokStr){
     const response =  axios.get(url,
     {headers : {'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
                 'Authorization' : 'Bearer ' + tokStr}})
     return response
 }
