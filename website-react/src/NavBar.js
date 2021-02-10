@@ -42,6 +42,7 @@ function NavBarItems({setRenderedComponent}) {
                 setRenderedComponent(comp);
             }
         }
+
     }, [componentNames]);
 
     return componentNames.map((comp, idx) => { return <NavBarComponent
