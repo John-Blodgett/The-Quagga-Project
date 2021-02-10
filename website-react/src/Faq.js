@@ -1,4 +1,7 @@
 import React from 'react'
+import Dropdown from 'react-bootstrap/Dropdown';
+
+import './Faq.css';
 
 //testing 
 import { useEffect } from 'react';
@@ -26,20 +29,64 @@ export default function Faq() {
             </h1>
             <p style={{textAlign: "left"}}>
             <ul>
-                <strong>Q</strong>: I have no assignments listed! <br/><br/>
-                <strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.
-                <br/><br/><br/>
-                <strong>Q</strong>: I have no assignments listed! <br/><br/>
-                <strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.
-                <br/><br/><br/>
-                <strong>Q</strong>: I have no assignments listed! <br/><br/>
-                <strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.
-                <br/><br/><br/>
-                <strong>Q</strong>: I have no assignments listed! <br/><br/>
-                <strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.
-                <br/><br/><br/>
-                <strong>Q</strong>: I have no assignments listed! <br/><br/>
-                <strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.
+                <div className = 'faq-questions'>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <strong>Q</strong>: I have no assignments listedasdfasdfsdasdffsda!
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.ItemText><strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.</Dropdown.ItemText>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br></br>
+                
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <strong>Q</strong>: I have no assignments listed!
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.ItemText><strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.</Dropdown.ItemText>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br></br>
+                
+
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <strong>Q</strong>: I have no assignments listed!
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.ItemText><strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.</Dropdown.ItemText>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br></br>
+
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <strong>Q</strong>: I have no assignments listed!
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.ItemText><strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.</Dropdown.ItemText>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br></br>
+
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <strong>Q</strong>: I have no assignments listed!
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.ItemText><strong>A</strong>: If properly logged in, there may just be no assignments on your Canvas.</Dropdown.ItemText>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br></br>
+                </div>
+                
             </ul>
             </p>
             

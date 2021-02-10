@@ -34,10 +34,10 @@ function App() {
 
     return (
         <>
-            {/* <Header />
+            <Header />
             <NavBar setRenderedComponent={setRenderedComponent} />
-            <Page renderedComponent={renderedComponent} /> */}
-            <Tags />
+            <Page renderedComponent={renderedComponent} />
+            {/*<Tags />*/}
         </>
     );
 }
