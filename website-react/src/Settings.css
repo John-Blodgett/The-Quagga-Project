@@ -1,37 +1,38 @@
 #top-list{
-    list-style: none;
-    margin:0;
-    padding: 0;
-  }
-a:link, a:visited{
-  color: black;
-  text-align: center;
-  text-decoration: none;
-}
-  .icon-button{
-    height: 60px;
-    width: 60px;
-    background-color: black;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #web-cog-wheel > img {
+    display: inline-block;
     float: right;
-    display: flex;
+    margin: 0;
+    padding-right: 1vw;
+    padding-left: 0;
+}
+
+a:link, a:visited{
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+.web-cog-wheel {
+    display: block;
+    float: right;
     width: 30px;
     height: 30px;
-  }
-  .dropdown{
-  top: 58px;
-  width: 300px;
-  background-color: white;
-  border-style: solid;
-  }
-  .menu-item{
-    height: 50px;
-  }
-  .menu-item:hover{
+}
+
+.drop-down-wrapper {
+    padding-top: 30px;
+    right: 1vw;
+    position: absolute;
+}
+
+.dropdown{
+    height: 2.5vh;
+    width: 10vw;
+    background-color: white;
+    border-style: solid;
+    text-align: center;
+}
+
+.dropdown:hover {
     background-color: #525357;
-  }
+}

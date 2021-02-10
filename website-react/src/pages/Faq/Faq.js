@@ -5,12 +5,12 @@ import './Faq.css';
 
 //testing 
 import { useEffect } from 'react';
-import { getRecentlyCompleted, parseRecentlyCompleted } from './Functions.js'
+import { getRecentlyCompleted, parseRecentlyCompleted } from '../../Functions.js'
 
 export default function Faq() {
     
     //testing Parse Recently Completed.
-    /*const tokStr = '15279~dbKYca95A1oQ0xR2RT6E8IeDVQz7mERY7MGeLGYrkSfZQc3pp0TJP06scthYfDNZ'
+    const tokStr = '15279~dbKYca95A1oQ0xR2RT6E8IeDVQz7mERY7MGeLGYrkSfZQc3pp0TJP06scthYfDNZ'
     useEffect(()=>{
                     getRecentlyCompleted(tokStr)
                     .then(result => {
@@ -20,7 +20,7 @@ export default function Faq() {
                     })
                     .catch(function (error){
                         console.log(error)
-                    })}, [])*/
+                    })}, [])
 
     return (
         <>

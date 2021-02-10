@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './NavBar.css';
 import NavBarComponent from './components/NavBarComponent';
-import Todo from './components/Todo.js'
-import SortBy from './components/SortBy.js'
-import Faq from './Faq'
-import About from './About'
+import SortBy from './components/SortBy.js';
+import Login from './login/Login';
+import Todo from './pages/Todo/Todo.js';
+import Faq from '../src/pages/Faq/Faq';
+import About from '../src/pages/About/About';
+import './NavBar.css';
 
 function NavBarItems({setRenderedComponent}) {
     const [componentNames, setComponentNames] = useState([
-        { name: 'FAQ', state: true },
+        { name: 'Login', state: true },
+        { name: 'FAQ', state: false },
         { name: 'Personal To-do', state: false },
         { name: 'School To-do', state: false },
         { name: 'Completed', state: false },
@@ -18,7 +20,10 @@ function NavBarItems({setRenderedComponent}) {
         for (let component of componentNames) {
             if (component.state === true) {
                 let comp;
-                if (component.name === 'FAQ') {
+                if (component.name === 'Login') {
+                    comp = <Login key={1}/>;
+                }
+                else if (component.name === 'FAQ') {
                     comp = <Faq key={1}/>;
                 }
                 else if (component.name === 'Personal To-do') {
@@ -33,6 +38,7 @@ function NavBarItems({setRenderedComponent}) {
                 else if (component.name === 'About Quagga') {
                     comp = <About key={1}/>;
                 }
+                
                 setRenderedComponent(comp);
             }
         }

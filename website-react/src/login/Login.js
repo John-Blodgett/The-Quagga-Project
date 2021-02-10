@@ -1,11 +1,13 @@
 import React from 'react';
+import closeIcon from "../images/closeIcon.png";
 import './Login.css';
 
-const Login = () => {
+const Login = (props) => {
     return (
         <div className="loginFrame">
-            <div className="background">
-                <div className="title">Quagga</div>
+            <div className="loginBackground">
+                <span className="loginCloseIcon" onClick={props.handleClose}>x</span>
+                <div className="loginTitle">Quagga</div>
             </div>
             <div className="loginContent">
                 <div className="inputLabel">Email:</div>
@@ -13,6 +15,7 @@ const Login = () => {
                 <div className="inputLabel" id="passwordLabel">Password:</div>
                 <input className="input" />
                 <button id="loginButton" >Login</button>
+                <button id="loginButtonGoogle" >Google Login</button>
                 <div className="horizButtonsDiv">
                     <button className="horizButtons">Sign Up</button>
                     <button className="horizButtons">Forgot Password?</button>

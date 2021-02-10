@@ -1,14 +1,18 @@
 .loginFrame {
     width: 275px;
-    height: 300px;
+    height: 380px;
     background: lightgrey; /* temp for developing */
     border-radius: 10px;
     position: center;
     margin: 0 auto;
+    align-items: center;
+    justify-content: center;
     /* border: 3px solid black; */
 }
 
-.background {
+.loginBackground {
+    width: 275px;
+    height: 75px;
     background-color: #0D3B66;
     border-radius: 10px 10px 0px 0px;
 }
@@ -19,7 +23,7 @@
     padding: 5% 10%; /* top/bottom right/left */
 }
 
-.title {
+.loginTitle {
     font-family: Roboto;
     color: white;
     font-style: normal;
@@ -27,6 +31,25 @@
     font-size: xx-large;
     line-height: 48px;
     text-align: center;
+    position: relative;
+    top: 1%;
+}
+
+.loginCloseIcon {
+    content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(41% - 30px);
+    top: calc(100vh - 82vh - 1px);
+    align-items: right;
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
 }
 
 .input {
@@ -49,6 +72,18 @@
     font-size: 16px;
 }
 
+#loginButtonGoogle {
+    width: 100%;
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 2.5%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: #0D3B66;
+    color: white;
+    font-size: 16px;
+}
+
 .horizButtonsDiv {
     display: inline-flex;
     width: 100%;
@@ -58,8 +93,3 @@
 .horizButtons {
     width: 50%;
 }
-
-
-
-
-
