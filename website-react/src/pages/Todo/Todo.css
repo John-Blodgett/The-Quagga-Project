@@ -2,7 +2,7 @@
     position: relative;
     left: 2%;
     display: grid;
-    width: 90vw;
+    width: 96vw;
     grid-template-rows: 12vh;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -12,7 +12,7 @@
     
 }
 .topBar {
-    width: 90vw;
+    width: 96vw;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background: #0D3B66;
@@ -26,7 +26,7 @@
 .web-ham-icon {
     position: absolute;
     top: 0vh;
-    left: 86vw;
+    left: 92vw;
     width: 3vw;
 }
 .todoFrame::-webkit-scrollbar {
