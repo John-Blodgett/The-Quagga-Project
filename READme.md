@@ -1,6 +1,6 @@
 The Quagga Project
 
--A web-based assigment priority list application used with Canvas.
+-A web-based assignment priority list application used with Canvas.
 
 ---
 Developers:
