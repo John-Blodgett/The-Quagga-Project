@@ -13,7 +13,6 @@ export default function Faq() {
                     .then(result => {
                         const data = result.data;
                         const parse_data = parseRecentlyCompleted(data)
-                        console.log(parse_data);
                     })
                     .catch(function (error){
                         console.log(error)
