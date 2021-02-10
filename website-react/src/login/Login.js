@@ -6,8 +6,12 @@ const Login = (props) => {
     return (
         <div className="loginFrame">
             <div className="loginBackground">
-                <span className="loginCloseIcon" onClick={props.handleClose}>x</span>
-                <div className="loginTitle">Quagga</div>
+                    <div className="loginCloseIcon">
+                        <a href="#" onClick={props.handleClose}> {/* what does href="#" mean */}
+                            <img id="loginCloseIconTag" src={closeIcon} onClick={props.handleClose} alt="Close Icon"></img>
+                        </a>
+                    </div>
+                    <div className="loginTitle">Quagga</div>
             </div>
             <div className="loginContent">
                 <div className="inputLabel">Email:</div>
@@ -20,7 +24,6 @@ const Login = (props) => {
                     <button className="horizButtons">Sign Up</button>
                     <button className="horizButtons">Forgot Password?</button>
                 </div>
-               
             </div>
         </div>
     );

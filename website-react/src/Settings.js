@@ -11,7 +11,6 @@ function NavItem({props, open, setOpen}) {
         else {
             document.getElementsByClassName("drop-down-wrapper")[0].style.display = "none";
         }
-        console.log(open);
     }, [open]);
 
     return (
